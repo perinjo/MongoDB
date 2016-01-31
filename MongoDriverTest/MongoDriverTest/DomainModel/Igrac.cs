@@ -10,9 +10,17 @@ namespace MongoDB.DomainModel
     public class Igrac
     {
         // ---- Licni podaci ---- 
+
         public long id { get; set; }
+
+        public String Id { get; set; }
+
         public String PunoIme { get; set; }
+/*
         public DateTime DatumRodjenja { get; set; }
+	
+*/
+	public String DatumRodjenja { get; set; }
         public String MestoRodjenja { get; set; }
         public String Visina { get; set; }
         public String Pozicija { get; set; }
