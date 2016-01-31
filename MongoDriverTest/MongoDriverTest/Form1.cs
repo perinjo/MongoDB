@@ -164,5 +164,11 @@ namespace MongoDriverTest
             var prvi = lista.First().ToJson(jsonWriterSettings);
 
         }
+
+        private void BtnAddContest_Click(object sender, EventArgs e)
+        {
+            FDodajTakmicenje dt = new FDodajTakmicenje();
+            dt.ShowDialog();
+        }
     }
 }

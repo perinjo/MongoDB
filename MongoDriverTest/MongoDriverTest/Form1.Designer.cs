@@ -34,6 +34,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.BtnAddContest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -78,7 +79,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(202, 165);
+            this.button5.Location = new System.Drawing.Point(238, 165);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 4;
@@ -88,7 +89,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(202, 205);
+            this.button6.Location = new System.Drawing.Point(238, 205);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 23);
             this.button6.TabIndex = 5;
@@ -96,11 +97,22 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // BtnAddContest
+            // 
+            this.BtnAddContest.Location = new System.Drawing.Point(120, 129);
+            this.BtnAddContest.Name = "BtnAddContest";
+            this.BtnAddContest.Size = new System.Drawing.Size(102, 23);
+            this.BtnAddContest.TabIndex = 6;
+            this.BtnAddContest.Text = "NovoTakmicenje";
+            this.BtnAddContest.UseVisualStyleBackColor = true;
+            this.BtnAddContest.Click += new System.EventHandler(this.BtnAddContest_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(375, 260);
+            this.Controls.Add(this.BtnAddContest);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -121,6 +133,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button BtnAddContest;
     }
 }
 

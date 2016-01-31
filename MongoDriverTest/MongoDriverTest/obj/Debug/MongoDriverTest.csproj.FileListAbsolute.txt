@@ -38,3 +38,6 @@ C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debu
 C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.Form1.resources
 C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.Properties.Resources.resources
 C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.csproj.GenerateResource.Cache
+D:\pera\programi\github\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\MongoDriverTest.exe.config
+D:\pera\programi\github\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.exe
+D:\pera\programi\github\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.pdb
