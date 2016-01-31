@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using MongoDB.Bson.IO;
 using MongoDB.Driver.GridFS;
 using System.IO;
+using MongoDB.DomainModel;
 
 namespace MongoDriverTest
 {
@@ -117,6 +118,10 @@ namespace MongoDriverTest
             var prvi = lista.First().ToJson(jsonWriterSettings);
             Radnik r = Newtonsoft.Json.JsonConvert.DeserializeObject<Radnik>(prvi);
             MessageBox.Show(r.ime);
+
+            // --- TESTING ----
+            /*var vracenIgrac = lista.Last().ToJson(jsonWriterSettings);
+            Igrac igrac = Newtonsoft.Json.JsonConvert.DeserializeObject<Igrac>(vracenIgrac);*/
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -125,7 +130,7 @@ namespace MongoDriverTest
             Book book = new Book(){
             Name = "Tom Sawyer",
             Content = "Content of the book goes here",
-            Data = File.ReadAllBytes(@"E:\a za fax\VII semestar\Grafika\PAT39.BMP")
+            Data = File.ReadAllBytes(@"E:\Sky.png\VII semestar\Grafika\PAT39.BMP")
         };
 
              MongoClient client = new MongoClient("mongodb://localhost");
@@ -163,6 +168,15 @@ namespace MongoDriverTest
 
             var prvi = lista.First().ToJson(jsonWriterSettings);
 
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            FDodavanjeIgraca fdi = new FDodavanjeIgraca();
+            fdi.ShowDialog();
+
+            FBrisanjeIzmenaPodataka fbp = new FBrisanjeIzmenaPodataka();
+            fbp.ShowDialog();
         }
     }
 }

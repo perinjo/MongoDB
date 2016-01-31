@@ -9,6 +9,7 @@ namespace MongoDB.DomainModel
 {
     class Takmicenje
     {
+        public String Ime { get; set; }
         public String Opis { get; set; } /*Neki opis, sta god da je. Samo za sva da budu na istu foru*/
         public String SpisakDrzava { get; set; } /*Spisak reprezentacija koje ucestvuju na tom takmicenju, za FIFA su sve tako da tamo ne treba :)*/
         public String SistemIgranja { get; set; } /*na foru prvo se igraju 5 grupe sa po 4 tima, prva 2 u svakoj grupi prolaze, posle se igra na ispadanje,... Na to sam mislio;;*/
