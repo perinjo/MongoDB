@@ -38,3 +38,11 @@ C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debu
 C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.Form1.resources
 C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.Properties.Resources.resources
 C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.csproj.GenerateResource.Cache
+C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FReprezentacija.resources
+C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\Interop.WMPLib.dll
+C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\Interop.WMPLib.dll
+C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.csproj.ResolveComReference.cache
+C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\NAudio.dll
+C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\NAudio.xml

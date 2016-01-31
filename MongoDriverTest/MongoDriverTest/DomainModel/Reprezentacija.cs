@@ -10,6 +10,7 @@ namespace MongoDB.DomainModel
     class Reprezentacija
     {
         // ---- Osnovni podaci ----
+        public long id { get; set; }
         public String Ime { get; set; }
         public String Nadimak { get; set; }
         public String Skracenica { get; set; } /*(sifra) 3 slovca, npr. SRB*/
@@ -17,7 +18,7 @@ namespace MongoDB.DomainModel
         public String Kapiten { get; set; }
         public String IgracSaNajviseNastupa { get; set; } /*Igrac br.Nastupa;;1 do 3 igraca sa najvise nastupa*/
         public String NajboljiStrelac { get; set; } /*Igrac br.Golova;;1 do 3 igraca sa najvise golova*/
-        public String FifaRang { get; set; } /*Moze i int da bude*/
+        public int FifaRang { get; set; } /*Moze i int da bude*/
         public String NajvecaPobedaPoraz { get; set; } /*Moze i da se odvoji, da ne budu zajedno*/
         // ---- Ostali podaci ----
         public String SportskaBiografija { get; set; } /*Neki opis o reprezentaciji*/

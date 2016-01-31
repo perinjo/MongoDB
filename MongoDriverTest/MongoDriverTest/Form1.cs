@@ -13,7 +13,9 @@ using Newtonsoft.Json;
 using MongoDB.Bson.IO;
 using MongoDB.Driver.GridFS;
 using System.IO;
-
+using MongoDB.Driver.Builders;
+using System.Media;
+using WMPLib;
 namespace MongoDriverTest
 {
     public partial class Form1 : Form
@@ -121,48 +123,238 @@ namespace MongoDriverTest
 
         private void button5_Click(object sender, EventArgs e)
         {
+            //MemoryStream mem = new MemoryStream();
 
-            Book book = new Book(){
-            Name = "Tom Sawyer",
-            Content = "Content of the book goes here",
-            Data = File.ReadAllBytes(@"E:\a za fax\VII semestar\Grafika\PAT39.BMP")
-        };
+            Image image = Image.FromFile("E:\\a za fax\\VII semestar\\Grafika\\ASHSEN512.BMP");
+            byte[] data;
+            MemoryStream m = new MemoryStream();
+           
+            image.Save(m, image.RawFormat);
+            data = m.ToArray();
+           
+            string host = "localhost";
+            int port = 27017;
+            string databaseName = "docs";
 
-             MongoClient client = new MongoClient("mongodb://localhost");
-            // MongoServer server = client.GetServer();
-             MongoDatabase database = (MongoDatabase)client.GetDatabase("test");
-             MongoCollection collection = database.GetCollection("docs");
- 
-            Stream memoryStream = new MemoryStream(book.Data);
-            MongoGridFSFileInfo gfsi = database.GridFS.Upload(memoryStream, book.Name);
-            BsonDocument photoMetadata = new BsonDocument
-                                         { { "FileName", "PAT39.BMT" },
-                                         { "Type", "image/bmp"},
-                                         { "Width", 128 },
-                                         { "Height", 128 }};
-            database.GridFS.SetMetadata(gfsi, photoMetadata);
-            book.ImageId = gfsi.Id.AsObjectId;
-            collection.Insert(book);
+            var _client = new MongoClient();
+           // var _database = (MongoDatabase)_client.GetDatabase("docs");
+
+
+
+            var grid = new MongoGridFS(new MongoServer(new MongoServerSettings { Server = new MongoServerAddress(host, port) }), databaseName, new MongoGridFSSettings());
+            
+            grid.Upload(m, "Test", new MongoGridFSCreateOptions
+            {
+                Id = 1,
+                ContentType = "image/bmp"
+            });
+
+
+
+            //Stream memoryStream = new MemoryStream(book.Data);
+            //MongoGridFSFileInfo gfsi = database.GridFS.Upload(memoryStream, book.Name);
+            //BsonDocument photoMetadata = new BsonDocument
+            //                             { { "FileName", "PAT39.BMT" },
+            //                             { "Type", "image/bmp"},
+            //                             { "Width", 128 },
+            //                             { "Height", 128 }};
+            //database.GridFS.SetMetadata(gfsi, photoMetadata);
+            //book.ImageId = gfsi.Id.AsObjectId;
+            //collection.Insert(book);
             MessageBox.Show("Added book with picture.");
             
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
+            string host = "localhost";
+            int port = 27017;
+            string databaseName = "docs";
+
             var _client = new MongoClient();
-            var _database = _client.GetDatabase("test");
+            // var _database = (MongoDatabase)_client.GetDatabase("docs");
 
-            var collection = _database.GetCollection<BsonDocument>("docs");
-            var filter = new BsonDocument();
-            //var count = 0;
-            var cursor = collection.Find(filter);
-            var lista = cursor.ToList();
+           
+            MemoryStream m = new MemoryStream();
+            
+            var grid = new MongoGridFS(new MongoServer(new MongoServerSettings { Server = new MongoServerAddress(host, port) }), databaseName, new MongoGridFSSettings());
 
-            var jsonWriterSettings = new JsonWriterSettings { OutputMode = JsonOutputMode.Strict };
-            //JObject json = JObject.Parse(prvi.ToJson<MongoDB.Bson.BsonDocument>(jsonWriterSettings));
+            var file = grid.FindOne("Test");
+            //MongoGridFSStream read = grid.OpenRead("Test");
+            //read.CopyTo(m);
+             Image slika;
+            var newFileName = "D:\\new_Untitled.png";
+            using (var stream = file.OpenRead())
+            {
+                var bytes = new byte[stream.Length];
+                stream.Read(bytes, 0, (int)stream.Length);
+                
+                
+               
+                using (var newFs = new FileStream(newFileName, FileMode.Create))
+                {
+                    
+                    newFs.Write(bytes, 0, bytes.Length);
+                    //slika = Image.FromStream(newFs);
+                } 
+            }
+            
+          
 
-            var prvi = lista.First().ToJson(jsonWriterSettings);
+            
+           
+        }
 
+        private void reprezentacijeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FReprezentacija forma = new FReprezentacija();
+            forma.ShowDialog();
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("docs");
+            var fs = new GridFSBucket(database);
+
+            var test = fs.DownloadAsBytesByName("Test");
+
+            //System.Drawing.ImageConverter converter = new System.Drawing.ImageConverter();
+            //Image img = (Image)converter.ConvertFrom(test);
+
+            //MemoryStream mem = new MemoryStream(test);
+
+            Image returnImage = null;
+            using (MemoryStream ms = new MemoryStream(test))
+            {
+                returnImage = Image.FromStream(ms);
+            }
+            //return returnImage;
+            //Bitmap x = new Bitmap(mem, true);
+
+            this.pictureBox1.Image = returnImage;
+            this.pictureBox1.Height = returnImage.Height;
+            this.pictureBox1.Width = returnImage.Width;
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Image slika;
+            FileStream stream;
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("docs");
+            var fs = new GridFSBucket(database);
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                stream = new System.IO.FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
+                slika = Image.FromStream(stream);
+
+                GridFSUploadOptions opcije = new GridFSUploadOptions();
+                opcije.ContentType = "image/jpg";
+                opcije.ChunkSizeBytes = Convert.ToInt32(stream.Length);
+
+                int duzina = Convert.ToInt32(stream.Length);
+                byte[] bajtovi = new byte[duzina];
+                stream.Seek(0, SeekOrigin.Begin);
+                int bytesRead = stream.Read(bajtovi, 0, duzina);
+
+                fs.UploadFromBytes("Test", bajtovi, opcije);
+
+            }
+            MessageBox.Show("done");
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            FileStream stream;
+            OpenFileDialog ofd = new OpenFileDialog();
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("docs");
+            var fs = new GridFSBucket(database);
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                stream = new System.IO.FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
+                //SoundPlayer simpleSound = new SoundPlayer(stream);
+                //simpleSound.Play();
+
+                GridFSUploadOptions opcije = new GridFSUploadOptions();
+                opcije.ContentType = "audio/wav";
+                opcije.ChunkSizeBytes = Convert.ToInt32(stream.Length)/4;
+
+                int duzina = Convert.ToInt32(stream.Length);
+                byte[] bajtovi = new byte[duzina];
+                stream.Seek(0, SeekOrigin.Begin);
+                int bytesRead = stream.Read(bajtovi, 0, duzina);
+
+                fs.UploadFromBytes("Muzika", bajtovi, opcije);
+
+            }
+           
+        }
+        //Audio needs this .
+        private NAudio.Wave.BlockAlignReductionStream stream = null;
+
+        private NAudio.Wave.DirectSoundOut output = null;
+
+        private void DisposeWave()
+        {
+            if (output != null)
+            {
+                if (output.PlaybackState == NAudio.Wave.PlaybackState.Playing) output.Stop();
+                output.Dispose();
+                output = null;
+            }
+            if (stream != null)
+            {
+                stream.Dispose();
+                stream = null;
+            }
+        }
+        private void button10_Click(object sender, EventArgs e)
+        {
+            
+            
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("docs");
+            var fs = new GridFSBucket(database);
+            
+            //var aaa = fs.Find()
+            var test = fs.DownloadAsBytesByName("Muzika");
+
+            MemoryStream memStream = new MemoryStream(test);
+
+            //OpenFileDialog open = new OpenFileDialog();
+            //open.Filter = "Audio File (*.mp3;*.wav)|*.mp3;*.wav;";
+            //if (open.ShowDialog() != DialogResult.OK) return;
+
+            DisposeWave();
+
+           // if (open.FileName.EndsWith(".mp3"))
+           // {
+                NAudio.Wave.WaveStream pcm = NAudio.Wave.WaveFormatConversionStream.CreatePcmStream(new NAudio.Wave.Mp3FileReader(memStream));
+                stream = new NAudio.Wave.BlockAlignReductionStream(pcm);
+           // }
+           // else if (open.FileName.EndsWith(".wav"))
+            //{
+            //    NAudio.Wave.WaveStream pcm = new NAudio.Wave.WaveChannel32(new NAudio.Wave.WaveFileReader(open.FileName));
+            //    stream = new NAudio.Wave.BlockAlignReductionStream(pcm);
+            //}
+            //else throw new InvalidOperationException("Not a correct audio file type.");
+
+            output = new NAudio.Wave.DirectSoundOut();
+            output.Init(stream);
+            output.Play();
+
+
+            
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DisposeWave();
         }
     }
 }
