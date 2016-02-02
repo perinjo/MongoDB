@@ -44,6 +44,9 @@
             this.button9 = new System.Windows.Forms.Button();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.button10 = new System.Windows.Forms.Button();
+            this.igraciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.takmicenjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.brisanjeIIzmenaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
@@ -122,10 +125,14 @@
             // browseToolStripMenuItem
             // 
             this.browseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reprezentacijeToolStripMenuItem});
+            this.reprezentacijeToolStripMenuItem,
+            this.igraciToolStripMenuItem,
+            this.takmicenjaToolStripMenuItem,
+            this.brisanjeIIzmenaToolStripMenuItem});
             this.browseToolStripMenuItem.Name = "browseToolStripMenuItem";
             this.browseToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.browseToolStripMenuItem.Text = "Browse";
+            this.browseToolStripMenuItem.Click += new System.EventHandler(this.browseToolStripMenuItem_Click);
             // 
             // reprezentacijeToolStripMenuItem
             // 
@@ -192,6 +199,30 @@
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
+            // igraciToolStripMenuItem
+            // 
+            this.igraciToolStripMenuItem.Name = "igraciToolStripMenuItem";
+            this.igraciToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.igraciToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.igraciToolStripMenuItem.Text = "Igraci";
+            this.igraciToolStripMenuItem.Click += new System.EventHandler(this.igraciToolStripMenuItem_Click);
+            // 
+            // takmicenjaToolStripMenuItem
+            // 
+            this.takmicenjaToolStripMenuItem.Name = "takmicenjaToolStripMenuItem";
+            this.takmicenjaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
+            this.takmicenjaToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.takmicenjaToolStripMenuItem.Text = "Takmicenja";
+            this.takmicenjaToolStripMenuItem.Click += new System.EventHandler(this.takmicenjaToolStripMenuItem_Click);
+            // 
+            // brisanjeIIzmenaToolStripMenuItem
+            // 
+            this.brisanjeIIzmenaToolStripMenuItem.Name = "brisanjeIIzmenaToolStripMenuItem";
+            this.brisanjeIIzmenaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
+            this.brisanjeIIzmenaToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.brisanjeIIzmenaToolStripMenuItem.Text = "Brisanje i izmena";
+            this.brisanjeIIzmenaToolStripMenuItem.Click += new System.EventHandler(this.brisanjeIIzmenaToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -240,6 +271,9 @@
         private System.Windows.Forms.Button button9;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.ToolStripMenuItem igraciToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem takmicenjaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem brisanjeIIzmenaToolStripMenuItem;
     }
 }
 

@@ -356,5 +356,28 @@ namespace MongoDriverTest
         {
             DisposeWave();
         }
+
+        private void browseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void takmicenjaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FDodajTakmicenje forma = new FDodajTakmicenje();
+            forma.ShowDialog();
+        }
+
+        private void igraciToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FDodavanjeIgraca forma = new FDodavanjeIgraca();
+            forma.ShowDialog();
+        }
+
+        private void brisanjeIIzmenaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FBrisanjeIzmenaPodataka forma = new FBrisanjeIzmenaPodataka();
+            forma.ShowDialog();
+        }
     }
 }

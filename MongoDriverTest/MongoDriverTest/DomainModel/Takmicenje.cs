@@ -16,7 +16,7 @@ namespace MongoDB.DomainModel
         public String PoslednjiPobednik { get; set; } /*Poslednja reprezentacija koja je osvojila*/
         public String Statistika { get; set; } /*3 drzave koje su najvise puta osvajale;; eventualno jos nesto;;*/
         //public Image Logo { get; set; } /*Logo takmicenja*/
-        public String Ime { get; set; }
+        //public String Ime { get; set; }
 
         // ---- Sva takmicenja ----
         // 1. FIFA (Intercontinental competitions)
