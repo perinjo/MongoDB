@@ -172,11 +172,15 @@ namespace MongoDriverTest
 
         private void button7_Click(object sender, EventArgs e)
         {
-            FDodavanjeIgraca fdi = new FDodavanjeIgraca();
+            /*FDodavanjeIgraca fdi = new FDodavanjeIgraca();
             fdi.ShowDialog();
 
             FBrisanjeIzmenaPodataka fbp = new FBrisanjeIzmenaPodataka();
-            fbp.ShowDialog();
+            fbp.ShowDialog();*/
+
+            FDodavanjeStadiona fds = new FDodavanjeStadiona();
+            fds.ShowDialog();
+
         }
     }
 }
