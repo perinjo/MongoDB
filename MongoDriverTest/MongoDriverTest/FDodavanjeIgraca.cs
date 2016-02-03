@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using MongoDB.Bson.IO;
 using MongoDB.Driver.GridFS;
 using System.IO;
+using System.Drawing;
 
 namespace MongoDriverTest
 {
@@ -187,6 +188,24 @@ namespace MongoDriverTest
             stringToCheck = stringToCheck.Trim();
 
             return stringToCheck;
+        }
+
+        private void BtnUcitajSliku_Click(object sender, EventArgs e)
+        {
+            Image slika;
+            FileStream fs;
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                fs = new System.IO.FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
+                slika = Image.FromStream(fs);
+                PbSlikaIgraca.Image = Image.FromStream(fs);
+
+                int duzina = Convert.ToInt32(fs.Length);
+                byte[] bajtovi = new byte[duzina];
+                fs.Seek(0, SeekOrigin.Begin);
+                int bytesRead = fs.Read(bajtovi, 0, duzina);
+            }   
         }
 
     }
