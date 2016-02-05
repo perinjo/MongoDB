@@ -29,3 +29,9 @@ C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debu
 C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FBrisanjeIzmenaPodataka.resources
 C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FDodajTakmicenje.resources
 C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FDodavanjeIgraca.resources
+E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\MongoDriverTest.exe.config
+E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\Interop.WMPLib.dll
+E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\AxInterop.WMPLib.dll
+E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.csproj.ResolveComReference.cache
+E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.exe
+E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.pdb
