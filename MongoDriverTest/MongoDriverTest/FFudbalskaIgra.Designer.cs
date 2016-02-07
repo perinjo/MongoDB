@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.ScoreBoard = new System.Windows.Forms.Panel();
+            this.BtnSimulacijaUtakmice = new System.Windows.Forms.Button();
             this.GostSkracenica = new System.Windows.Forms.Label();
             this.DomacinSkracenica = new System.Windows.Forms.Label();
             this.Minuti = new System.Windows.Forms.Label();
@@ -40,25 +41,34 @@
             this.RtbSastavGost = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.BtnSimulacijaUtakmice = new System.Windows.Forms.Button();
             this.ScoreBoard.SuspendLayout();
             this.SuspendLayout();
             // 
             // ScoreBoard
             // 
-            this.ScoreBoard.Controls.Add(this.BtnSimulacijaUtakmice);
+            this.ScoreBoard.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ScoreBoard.Controls.Add(this.GostSkracenica);
             this.ScoreBoard.Controls.Add(this.DomacinSkracenica);
             this.ScoreBoard.Controls.Add(this.Minuti);
             this.ScoreBoard.Controls.Add(this.label1);
             this.ScoreBoard.Controls.Add(this.RezultatGost);
             this.ScoreBoard.Controls.Add(this.RezultatDomacin);
-            this.ScoreBoard.Location = new System.Drawing.Point(254, 13);
+            this.ScoreBoard.Location = new System.Drawing.Point(252, 13);
             this.ScoreBoard.Margin = new System.Windows.Forms.Padding(4);
             this.ScoreBoard.Name = "ScoreBoard";
             this.ScoreBoard.Size = new System.Drawing.Size(368, 104);
             this.ScoreBoard.TabIndex = 0;
             this.ScoreBoard.Visible = false;
+            // 
+            // BtnSimulacijaUtakmice
+            // 
+            this.BtnSimulacijaUtakmice.Location = new System.Drawing.Point(32, 12);
+            this.BtnSimulacijaUtakmice.Name = "BtnSimulacijaUtakmice";
+            this.BtnSimulacijaUtakmice.Size = new System.Drawing.Size(165, 38);
+            this.BtnSimulacijaUtakmice.TabIndex = 6;
+            this.BtnSimulacijaUtakmice.Text = "Simulacija utakmice";
+            this.BtnSimulacijaUtakmice.UseVisualStyleBackColor = true;
+            this.BtnSimulacijaUtakmice.Click += new System.EventHandler(this.BtnSimulacijaUtakmice_Click);
             // 
             // GostSkracenica
             // 
@@ -169,21 +179,12 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Gost";
             // 
-            // BtnSimulacijaUtakmice
-            // 
-            this.BtnSimulacijaUtakmice.Location = new System.Drawing.Point(106, 13);
-            this.BtnSimulacijaUtakmice.Name = "BtnSimulacijaUtakmice";
-            this.BtnSimulacijaUtakmice.Size = new System.Drawing.Size(165, 38);
-            this.BtnSimulacijaUtakmice.TabIndex = 6;
-            this.BtnSimulacijaUtakmice.Text = "Simulacija utakmice";
-            this.BtnSimulacijaUtakmice.UseVisualStyleBackColor = true;
-            this.BtnSimulacijaUtakmice.Click += new System.EventHandler(this.BtnSimulacijaUtakmice_Click);
-            // 
             // FFudbalskaIgra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1352, 570);
+            this.ClientSize = new System.Drawing.Size(919, 570);
+            this.Controls.Add(this.BtnSimulacijaUtakmice);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.RtbSastavGost);

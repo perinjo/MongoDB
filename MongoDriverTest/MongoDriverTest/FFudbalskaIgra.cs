@@ -38,7 +38,7 @@ namespace MongoDriverTest
 
         public void updateTeamDomacin(string skillPostave)
         {
-            string[] skilovi = skillPostave.Split(',');
+            string[] skilovi = skillPostave.Split(';');
             string textOutput = "";
             for (int i = 0; i < 11; i++)
             {
@@ -59,14 +59,15 @@ namespace MongoDriverTest
                     textOutput += "CF";
                 }
 
-                textOutput += "   " + skilovi[i] ;
+                textOutput += "   " + skilovi[i] + Environment.NewLine ;
             }
-             
+
+            RtbSastavDomacin.Text = textOutput;
         }
 
         public void updateTeamGost(string skillPostave)
         {
-            string[] skilovi = skillPostave.Split(',');
+            string[] skilovi = skillPostave.Split(';');
             string textOutput = "";
             for (int i = 0; i < 11; i++)
             {
@@ -87,8 +88,10 @@ namespace MongoDriverTest
                     textOutput += "CF";
                 }
 
-                textOutput += "   " + skilovi[i];
+                textOutput += "   " + skilovi[i] + Environment.NewLine;
             }
+
+            RtbSastavGost.Text = textOutput;
         }
 
         public void updateDogadjaji(string dogadjaj)
@@ -101,10 +104,11 @@ namespace MongoDriverTest
         private void BtnSimulacijaUtakmice_Click(object sender, EventArgs e)
         {
             ScoreBoard.Visible = true;
-            /*RtbDogadjaji.Enabled = true;
+            RtbDogadjaji.Enabled = true;
             RtbSastavDomacin.Enabled = true;
-            RtbSastavGost.Enabled = true;*/
-            if (!simulacijaUtakmice.IsAlive)
+            RtbSastavGost.Enabled = true;
+            BtnSimulacijaUtakmice.Visible = false;
+            if (simulacijaUtakmice == null || !simulacijaUtakmice.IsAlive)
             {
                 AlgoritamSimulacije algo = new AlgoritamSimulacije(this);
                 simulacijaUtakmice = new Thread(new ThreadStart(algo.simulirajUtakmicu));
@@ -114,7 +118,7 @@ namespace MongoDriverTest
 
         private void FFudbalskaIgra_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (simulacijaUtakmice.IsAlive)
+            if (simulacijaUtakmice != null && simulacijaUtakmice.IsAlive)
             {
                 simulacijaUtakmice.Abort();
             }

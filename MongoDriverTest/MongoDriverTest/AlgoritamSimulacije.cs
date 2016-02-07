@@ -25,8 +25,11 @@ namespace MongoDriverTest
             double[] gost = new double[11];
 
             // ---- Dodela skilova ----
-            domacin = noviSkilovi(domacin, true);
-            gost = noviSkilovi(gost, false);
+            domacin = noviSkilovi(domacin, true, 1);
+            gost = noviSkilovi(gost, false, 1);
+
+            int domacinGolovi = 0;
+            int gostGolovi = 0;
 
             delUpdateFormInformations updateDogadjaj = new delUpdateFormInformations(forma.updateDogadjaji);         
 
@@ -36,9 +39,7 @@ namespace MongoDriverTest
                 // korak 1
                 int napadaTim = izborTimaKojiNapada();
                 Thread.Sleep(500); // Da se ne bi izgubio pointer u algoritam
-
-                int domacinGolovi = 0;
-                int gostGolovi = 0;
+                
                 bool nastavakAkcije = false;
                 bool nikoNemaAkciju = true;               
                 if (napadaTim == 1)
@@ -60,7 +61,7 @@ namespace MongoDriverTest
                         nastavakAkcije = sredinaPobedjena(domacin, gost);
 
                         // Update-ujemo dogadjaj na formu
-                        forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, "DOMACIN: Zapocinje akciju");
+                        forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i+1).ToString() + "' DOMACIN: Zapocinje akciju");
                         Thread.Sleep(500);
                     }
                     else if (napadaTim == 2)
@@ -68,7 +69,7 @@ namespace MongoDriverTest
                         nastavakAkcije = sredinaPobedjena(gost, domacin);
 
                         // Update-ujemo dogadjaj na formu
-                        forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, "GOST: Zapocinje akciju");
+                        forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' GOST: Zapocinje akciju");
                         Thread.Sleep(500);
                     }
 
@@ -81,7 +82,7 @@ namespace MongoDriverTest
                             nastavakAkcije = odbranaPobedjena(domacin, gost);
 
                             // Update-ujemo dogadjaj na formu
-                            forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, "DOMACIN: Lepo razmenjuju pasove i prolaze centar");
+                            forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' DOMACIN: Lepo razmenjuju pasove i prolaze centar");
                             Thread.Sleep(500);
                         }
                         else if (napadaTim == 2)
@@ -89,7 +90,7 @@ namespace MongoDriverTest
                             nastavakAkcije = odbranaPobedjena(gost, domacin);
 
                             // Update-ujemo dogadjaj na formu
-                            forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, "GOST: Lepo razmenjuju pasove i prolaze centar");
+                            forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' GOST: Lepo razmenjuju pasove i prolaze centar");
                             Thread.Sleep(500);
                         }
 
@@ -101,7 +102,7 @@ namespace MongoDriverTest
                                 nastavakAkcije = odbranaGolmana(domacin, gost);
 
                                 // Update-ujemo dogadjaj na formu
-                                forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, "DOMACIN: Prolaze protivnicku odbranu");
+                                forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' DOMACIN: Prolaze protivnicku odbranu");
                                 Thread.Sleep(500);
                             }
                             else if (napadaTim == 2)
@@ -109,7 +110,7 @@ namespace MongoDriverTest
                                 nastavakAkcije = odbranaGolmana(gost, domacin);
 
                                 // Update-ujemo dogadjaj na formu
-                                forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, "GOST: Prolaze protivnicku odbranu");
+                                forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' GOST: Prolaze protivnicku odbranu");
                                 Thread.Sleep(500);
                             }
 
@@ -121,16 +122,22 @@ namespace MongoDriverTest
                                     domacinGolovi++;
                                     // Update-ujemo dogadjaj na formu
                                     delUpdateFormInformations updateGol = new delUpdateFormInformations(forma.updateDomacinRez);
-                                    forma.RezultatDomacin.BeginInvoke(updateGol, "DOMACIN: GOOOL !!!");
+                                    forma.RezultatDomacin.BeginInvoke(updateGol, domacinGolovi.ToString());
                                     Thread.Sleep(500);
+                                    forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' DOMACIN: GOOOL !!!");
+                                    Thread.Sleep(500);                                   
+                                    gost = noviSkilovi(gost, false, 2);
                                 }
                                 else if (napadaTim == 2)
                                 {
                                     gostGolovi++;
                                     // Update-ujemo dogadjaj na formu
                                     delUpdateFormInformations updateGol = new delUpdateFormInformations(forma.updateGostRez);
-                                    forma.RezultatGost.BeginInvoke(updateGol, "GOST: GOOOL !!!");
+                                    forma.RezultatGost.BeginInvoke(updateGol, gostGolovi.ToString());
                                     Thread.Sleep(500);
+                                    forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' GOST: GOOOL !!!");
+                                    Thread.Sleep(500);
+                                    domacin = noviSkilovi(domacin, true, 2);
                                 }
                             }
                             else
@@ -139,14 +146,14 @@ namespace MongoDriverTest
                                 if (napadaTim == 1)
                                 {
                                     // Update-ujemo dogadjaj na formu
-                                    forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, "GOST: Kakva odbrana golmana");
+                                    forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' GOST: Kakva odbrana golmana");
                                     Thread.Sleep(500);
                                     
                                 }
                                 else if (napadaTim == 2)
                                 {
                                     // Update-ujemo dogadjaj na formu
-                                    forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, "DOMACIN: Kakva odbrana golmana");
+                                    forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' DOMACIN: Kakva odbrana golmana");
                                     Thread.Sleep(500);
                                 }
                             }
@@ -157,13 +164,13 @@ namespace MongoDriverTest
                             if (napadaTim == 1)
                             {
                                 // Update-ujemo dogadjaj na formu
-                                forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, "GOST: Odbrana otklanja opasnost");
+                                forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' GOST: Odbrana otklanja opasnost");
                                 Thread.Sleep(500);
                             }
                             else if (napadaTim == 2)
                             {                             
                                 // Update-ujemo dogadjaj na formu
-                                forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, "DOMACIN: Odbrana otklanja opasnost");
+                                forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' DOMACIN: Odbrana otklanja opasnost");
                                 Thread.Sleep(500);
                             }
                         }
@@ -174,14 +181,14 @@ namespace MongoDriverTest
                         if (napadaTim == 1)
                         {
                             // Update-ujemo dogadjaj na formu
-                            forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, "GOST: Igraci sredine terena veoma dobro pokrivaju protivnike");
+                            forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' GOST: Igraci sredine terena veoma dobro pokrivaju protivnike");
                             Thread.Sleep(500);
                         }
                         else if (napadaTim == 2)
                         {
                             
                             // Update-ujemo dogadjaj na formu
-                            forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, "DOMACIN: Igraci sredine terena veoma dobro pokrivaju protivnike");
+                            forma.RtbDogadjaji.BeginInvoke(updateDogadjaj, (i + 1).ToString() + "' DOMACIN: Igraci sredine terena veoma dobro pokrivaju protivnike");
                             Thread.Sleep(500);
                         }
                     }
@@ -195,8 +202,8 @@ namespace MongoDriverTest
                 if (i == 15 || i == 30 || i == 45 || i == 60 || i == 75)
                 {
                     // ---- Nova dodela skilova ----
-                    domacin = noviSkilovi(domacin, true);
-                    gost = noviSkilovi(gost, false);
+                    domacin = noviSkilovi(domacin, true, 2);
+                    gost = noviSkilovi(gost, false, 2);
                 }
 
             }
@@ -210,12 +217,12 @@ namespace MongoDriverTest
             Random rand = new Random();
             int izborTima = rand.Next(1, 100);           
 
-            if (izborTima < 26)
+            if (izborTima < 16)
             {
                 // Napada Domacin
                 return 1;
             }
-            else if (izborTima > 75)
+            else if (izborTima > 84)
             {
                 // Napada gost
                 return 2;
@@ -249,7 +256,7 @@ namespace MongoDriverTest
             Random rand = new Random();
             double faktorSreceATEAM = 1;
             double faktorSreceDTEAM = 1;
-            faktorSreceATEAM = Math.Round(rand.NextDouble() * (2.0 - 0.5) + 0.5, 1);
+            faktorSreceATEAM = Math.Round(rand.NextDouble() * (1.5 - 0.5) + 0.5, 1);
             faktorSreceDTEAM = Math.Round(rand.NextDouble() * (2.0 - 0.5) + 0.5, 1);
 
             //string msg = ATEAM.ToString() + "*" + faktorSreceATEAM.ToString() + " VS " + DTEAM.ToString() + "*" + faktorSreceDTEAM.ToString();
@@ -341,7 +348,7 @@ namespace MongoDriverTest
         }
 
         // ---- Update skilova igraca ----
-        public double[] noviSkilovi(double[] team, bool domacin)
+        public double[] noviSkilovi(double[] team, bool domacin, int podeliSa)
         {
             Random rand = new Random();
             string noveOcene = "";
@@ -349,10 +356,10 @@ namespace MongoDriverTest
             for (int i = 0; i < 11; i++)
             {
                 int skill = rand.Next(1, 10);
-                team[i] = Math.Round((team[i] + skill) / 2, 1);
-                noveOcene += team[i].ToString() + ',';
+                team[i] = Math.Round((team[i] + skill) / podeliSa, 1);
+                noveOcene += team[i].ToString() + ';';
             }
-            noveOcene = noveOcene.TrimEnd(',');
+            noveOcene = noveOcene.TrimEnd(';');
 
             // ---- Update-ovanje ocene timova na formi
             if (domacin)

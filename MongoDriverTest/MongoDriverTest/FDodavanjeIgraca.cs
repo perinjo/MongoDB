@@ -199,7 +199,7 @@ namespace MongoDriverTest
             {
                 fs = new System.IO.FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
                 slika = Image.FromStream(fs);
-                PbSlikaIgraca.Image = Image.FromStream(fs);
+               // PbSlikaIgraca.Image = Image.FromStream(fs);
 
                 int duzina = Convert.ToInt32(fs.Length);
                 byte[] bajtovi = new byte[duzina];
