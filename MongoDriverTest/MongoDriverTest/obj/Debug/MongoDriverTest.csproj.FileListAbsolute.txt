@@ -35,3 +35,14 @@ E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\AxInterop.WMPLib.dll
 E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.csproj.ResolveComReference.cache
 E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.exe
 E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.pdb
+E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.csprojResolveAssemblyReference.cache
+E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FBrisanjeIzmenaPodataka.resources
+E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FDodajTakmicenje.resources
+E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FDodavanjeIgraca.resources
+E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FDodavanjeStadiona.resources
+E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.DomainModel.FDodavanjeTrenera.resources
+E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FFudbalskaIgra.resources
+E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.Form1.resources
+E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FReprezentacija.resources
+E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.Properties.Resources.resources
+E:\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.csproj.GenerateResource.Cache

@@ -379,5 +379,11 @@ namespace MongoDriverTest
             FBrisanjeIzmenaPodataka forma = new FBrisanjeIzmenaPodataka();
             forma.ShowDialog();
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            FFudbalskaIgra ffi = new FFudbalskaIgra();
+            ffi.ShowDialog();
+        }
     }
 }
