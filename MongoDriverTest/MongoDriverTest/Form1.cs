@@ -16,6 +16,7 @@ using System.IO;
 using MongoDB.Driver.Builders;
 using System.Media;
 using WMPLib;
+using MongoDB.DomainModel;
 namespace MongoDriverTest
 {
     public partial class Form1 : Form
@@ -289,7 +290,7 @@ namespace MongoDriverTest
                 stream.Seek(0, SeekOrigin.Begin);
                 int bytesRead = stream.Read(bajtovi, 0, duzina);
 
-                fs.UploadFromBytes("Muzika", bajtovi, opcije);
+                fs.UploadFromBytes(ofd.SafeFileName, bajtovi, opcije);
 
             }
            
@@ -378,6 +379,25 @@ namespace MongoDriverTest
         {
             FBrisanjeIzmenaPodataka forma = new FBrisanjeIzmenaPodataka();
             forma.ShowDialog();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            var _client = new MongoClient();
+            var _database = _client.GetDatabase("test");
+            var collection = _database.GetCollection<BsonDocument>("testKolekcija");
+   
+            Reprezentacija r = new Reprezentacija();
+
+            
+            //r.Ime = null;
+            //r.FifaRang = null;
+            //r.id = null;
+
+            var bsn = r.ToBsonDocument();
+
+            collection.InsertOne(bsn);
+
         }
     }
 }

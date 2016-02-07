@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuxLib.cs" />
     <Compile Include="Book.cs" />
     <Compile Include="FDodavanjeStadiona.cs">
       <SubType>Form</SubType>

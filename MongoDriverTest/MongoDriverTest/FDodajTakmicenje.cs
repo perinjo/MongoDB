@@ -137,9 +137,9 @@ namespace MongoDriverTest
                 novoTakmicenje.Statistika = statistika;
 
                 var client = new MongoClient();
-                var database = client.GetDatabase("preduzece");
+                var database = client.GetDatabase("test");
 
-                var collection = database.GetCollection<BsonDocument>("radnici");
+                var collection = database.GetCollection<BsonDocument>("takmicenja");
                 var filter = new BsonDocument();
                 var document = novoTakmicenje.ToBsonDocument();
                 collection.InsertOne(document);

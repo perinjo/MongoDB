@@ -33,37 +33,38 @@ namespace MongoDriverTest
             var _client = new MongoClient();
             var _database = _client.GetDatabase("test");
             // mora Nemca da mi kaze gde ih smesta koja kolekcija
-            var collection = _database.GetCollection<BsonDocument>("igraci");
+            var collection = _database.GetCollection<Igrac>("igraci");
             var filter = new BsonDocument();
 
-            var result = await collection.Find(filter).ToListAsync();
-
-            foreach (BsonDocument doc in result)
+            var result = await collection.Find(filter).ToListAsync<Igrac>();
+            
+            foreach (Igrac doc in result)
             {
-                var jsonWriterSettings = new JsonWriterSettings { OutputMode = JsonOutputMode.Strict };
-                var json = doc.ToJson(jsonWriterSettings);
-                Igrac r = Newtonsoft.Json.JsonConvert.DeserializeObject<Igrac>(json);
+                //var jsonWriterSettings = new JsonWriterSettings { OutputMode = JsonOutputMode.Strict };
+                
+                //var json = doc.ToJson(jsonWriterSettings);
+                //Igrac r = Newtonsoft.Json.JsonConvert.DeserializeObject<Igrac>(json);
 
-                ListViewItem lv1 = new ListViewItem(r.id.ToString());
-                lv1.SubItems.Add(r.PunoIme);
-                lv1.SubItems.Add(r.DatumRodjenja.ToString());
-                lv1.SubItems.Add(r.Pozicija);
-                lv1.SubItems.Add(r.TrenutniKlub);
+                ListViewItem lv1 = new ListViewItem(doc._id.ToString());
+                lv1.SubItems.Add(doc.PunoIme);
+                lv1.SubItems.Add(doc.DatumRodjenja.ToString());
+                lv1.SubItems.Add(doc.Pozicija);
+                lv1.SubItems.Add(doc.TrenutniKlub);
 
-                LVSviIgrac.Items.Add(lv1);
+                LvIgraci.Items.Add(lv1);
             }
         }
         private void FReprezentacija_Load(object sender, EventArgs e)
         {
 
-            UpdateListView();
+            AuxLib.UpdateIgraciListView(this.LvIgraci);
                 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             // PROVERAVA PO IMENU AKO IME NIJE UNIQUE NECE MOCI DVA SA ISTIM IMENOM U SASTAV
-            if(this.LVSviIgrac.SelectedItems.Count != 0)
+            if (this.LvIgraci.SelectedItems.Count != 0)
             {
                 if(this.LVSastav.Items.Count == 30)
                 {
@@ -71,7 +72,7 @@ namespace MongoDriverTest
                     return;
                 }
                 bool postoji = false;
-                var test = this.LVSviIgrac.SelectedItems[0];
+                var test = this.LvIgraci.SelectedItems[0];
                 foreach(ListViewItem item in LVSastav.Items)
                 {
                     if(item.Text == test.Text)
@@ -169,10 +170,12 @@ namespace MongoDriverTest
                 MessageBox.Show("Morate izabrati kapitena!");
                 return;
             }
-            //database access
+            try
+            {
+                //database access
             var _client = new MongoClient();
             var _database = _client.GetDatabase("test");
-            var collection = _database.GetCollection<BsonDocument>("reprezentacija");
+            var collection = _database.GetCollection<BsonDocument>("reprezentacije");
             //filters
             var filterAllCount = new BsonDocument();
             var filterForUniqueCheck = Builders<BsonDocument>.Filter.Eq("Ime", this.tbIme.Text); 
@@ -180,14 +183,14 @@ namespace MongoDriverTest
 
             //test if reprezentacija exists
             var test = collection.Find(filterForUniqueCheck).Count();
-            if(test != 0)
-            {
-                var reprez = collection.Find(filterForUniqueCheck).First();
-                var jsonWriterSettings = new JsonWriterSettings { OutputMode = JsonOutputMode.Strict };
+            //if(test != 0)
+            //{
+            //    var reprez = collection.Find(filterForUniqueCheck).First();
+            //    var jsonWriterSettings = new JsonWriterSettings { OutputMode = JsonOutputMode.Strict };
 
-                Reprezentacija rep = Newtonsoft.Json.JsonConvert.DeserializeObject<Reprezentacija>(reprez.ToJson(jsonWriterSettings));
+            //    Reprezentacija rep = Newtonsoft.Json.JsonConvert.DeserializeObject<Reprezentacija>(reprez.ToJson(jsonWriterSettings));
                 
-            }
+            //}
             var countForID = collection.Count(filterAllCount);
 
             // model creating
@@ -240,6 +243,12 @@ namespace MongoDriverTest
             }
             //reset kapetana na null
             elKapetano = null;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -262,7 +271,8 @@ namespace MongoDriverTest
                         {"id",test.ToString()},
                         {"PunoIme","Test"+test.ToString()},
                         {"Pozicija","Sve"},
-                        {"TrenutniKlub","Real MadZid"}
+                        {"TrenutniKlub","Real MadZid"},
+                        {"DatumRodjenja","1.1.1991"}
                     
 
                     };
@@ -301,7 +311,7 @@ namespace MongoDriverTest
                 };
                 collection.DeleteMany(filter);
                 testData = false;
-                this.LVSviIgrac.Items.Clear();
+                this.LvIgraci.Items.Clear();
                 this.UpdateListView();
                 MessageBox.Show("Obrisano.");
             }

@@ -14,6 +14,7 @@ using MongoDB.Bson;
 using Newtonsoft.Json;
 using MongoDB.Bson.IO;
 using MongoDB.Driver.GridFS;
+using MongoDriverTest.DomainModel;
 
 namespace MongoDriverTest
 {
@@ -69,8 +70,39 @@ namespace MongoDriverTest
                 MessageBox.Show("Unesite vlasnika stadiona!");
                 return;
             }
+            Stadion forSave = new Stadion();
+            forSave.Ime = StringCleaner.checkString(TbIme.Text);
+            forSave.Istorija = StringCleaner.checkString(RtbIstorija.Text);
+            forSave.Kapacitet = StringCleaner.checkString(TbKapacitet.Text);
+            forSave.Lokacija = StringCleaner.checkString(TbDrzava.Text) +","+ StringCleaner.checkString(TbGrad.Text);
+            forSave.Vlasnik = StringCleaner.checkString(TbVlasnik.Text);
 
 
+            var _client = new MongoClient();
+            var _database = _client.GetDatabase("test");
+
+            var collection = _database.GetCollection<BsonDocument>("stadioni");
+            var filter = new BsonDocument()
+                {
+                    {"Ime",TbIme.Text}
+                };
+            var document = forSave.ToBsonDocument();
+
+            var filterForUniqueCheck = Builders<BsonDocument>.Filter.Eq("Ime", TbIme.Text);
+
+
+            //test if  exists
+            var test = collection.Find(filterForUniqueCheck).Count();
+            if(test == 0)
+            {
+                collection.InsertOne(document);
+                MessageBox.Show("Uspesno dodat novi stadion!");
+            }
+            else 
+            {
+                collection.ReplaceOne(filter, document);
+                MessageBox.Show("Uspesno azuriran stadion!");
+            }
         }
     }
 }

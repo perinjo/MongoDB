@@ -52,12 +52,6 @@
             this.tbSelektor = new System.Windows.Forms.TextBox();
             this.tbSkracenica = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.LVSviIgrac = new System.Windows.Forms.ListView();
-            this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
@@ -71,6 +65,14 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.LvIgraci = new System.Windows.Forms.ListView();
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFifaRang)).BeginInit();
@@ -286,52 +288,9 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Selektor";
             // 
-            // LVSviIgrac
-            // 
-            this.LVSviIgrac.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.id,
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.LVSviIgrac.FullRowSelect = true;
-            this.LVSviIgrac.Location = new System.Drawing.Point(6, 19);
-            this.LVSviIgrac.MaximumSize = new System.Drawing.Size(451, 330);
-            this.LVSviIgrac.MultiSelect = false;
-            this.LVSviIgrac.Name = "LVSviIgrac";
-            this.LVSviIgrac.Size = new System.Drawing.Size(451, 330);
-            this.LVSviIgrac.TabIndex = 14;
-            this.LVSviIgrac.UseCompatibleStateImageBehavior = false;
-            this.LVSviIgrac.View = System.Windows.Forms.View.Details;
-            // 
-            // id
-            // 
-            this.id.Text = "id";
-            this.id.Width = 0;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Puno Ime";
-            this.columnHeader1.Width = 78;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Datum rodjenja";
-            this.columnHeader2.Width = 114;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Pozicija";
-            this.columnHeader3.Width = 86;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Trenutni klub";
-            this.columnHeader4.Width = 106;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(634, 412);
+            this.button1.Location = new System.Drawing.Point(642, 417);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(221, 29);
             this.button1.TabIndex = 15;
@@ -342,7 +301,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.LVSviIgrac);
+            this.groupBox2.Controls.Add(this.LvIgraci);
             this.groupBox2.Location = new System.Drawing.Point(514, 0);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(485, 362);
@@ -353,7 +312,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(530, 368);
+            this.button4.Location = new System.Drawing.Point(526, 382);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(221, 29);
             this.button4.TabIndex = 19;
@@ -363,7 +322,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(757, 368);
+            this.button5.Location = new System.Drawing.Point(753, 382);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(221, 29);
             this.button5.TabIndex = 21;
@@ -445,6 +404,61 @@
             // 
             this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
+            // LvIgraci
+            // 
+            this.LvIgraci.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader9,
+            this.columnHeader10,
+            this.columnHeader11,
+            this.columnHeader12,
+            this.columnHeader13,
+            this.columnHeader14,
+            this.columnHeader15});
+            this.LvIgraci.FullRowSelect = true;
+            this.LvIgraci.GridLines = true;
+            this.LvIgraci.Location = new System.Drawing.Point(12, 19);
+            this.LvIgraci.MultiSelect = false;
+            this.LvIgraci.Name = "LvIgraci";
+            this.LvIgraci.Size = new System.Drawing.Size(473, 337);
+            this.LvIgraci.TabIndex = 30;
+            this.LvIgraci.UseCompatibleStateImageBehavior = false;
+            this.LvIgraci.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "ID";
+            this.columnHeader9.Width = 0;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Puno ime";
+            this.columnHeader10.Width = 83;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Mesto rodjenja";
+            this.columnHeader11.Width = 102;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Datum rodjenja";
+            this.columnHeader12.Width = 88;
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "Trenutni klub";
+            this.columnHeader13.Width = 53;
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "Visina";
+            this.columnHeader14.Width = 72;
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "Pozicija";
+            this.columnHeader15.Width = 130;
+            // 
             // FReprezentacija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -491,11 +505,6 @@
         private System.Windows.Forms.TextBox tbSelektor;
         private System.Windows.Forms.TextBox tbSkracenica;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ListView LVSviIgrac;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button4;
@@ -517,9 +526,16 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ColumnHeader id2;
-        private System.Windows.Forms.ColumnHeader id;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ListView LvIgraci;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.ColumnHeader columnHeader15;
 
 
     }

@@ -30,6 +30,7 @@
         {
             this.TbPanel = new System.Windows.Forms.TabControl();
             this.TpIgrac = new System.Windows.Forms.TabPage();
+            this.BtnIzmeniIgraca = new System.Windows.Forms.Button();
             this.BtnIzbrisiIgraca = new System.Windows.Forms.Button();
             this.LvIgraci = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -40,6 +41,7 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TpReprezentacije = new System.Windows.Forms.TabPage();
+            this.BtnIzmeniReprezentaciju = new System.Windows.Forms.Button();
             this.BtnIzbrisiReprezentaciju = new System.Windows.Forms.Button();
             this.LvReprezentacije = new System.Windows.Forms.ListView();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -47,18 +49,40 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TpTakmicenja = new System.Windows.Forms.TabPage();
+            this.BtnIzmeniTakmicenje = new System.Windows.Forms.Button();
             this.BtnIzbrisiTakmicenje = new System.Windows.Forms.Button();
             this.LvTakmicanja = new System.Windows.Forms.ListView();
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.BtnIzmeniIgraca = new System.Windows.Forms.Button();
-            this.BtnIzmeniReprezentaciju = new System.Windows.Forms.Button();
-            this.BtnIzmeniTakmicenje = new System.Windows.Forms.Button();
+            this.Ime_takmicenja = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Opis = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Spisak_drzava = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Sistem_igranja = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Poslednji_pobednik = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Statistika = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.LVStadioni = new System.Windows.Forms.ListView();
+            this.Ime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Lokacija = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Kapacitet = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Vlasnik = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Istorija = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.LVTreneri = new System.Windows.Forms.ListView();
+            this.PunoIme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Datum_rodjenja = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Mesto_rodjenja = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Trenutni_klub = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Trenerska_karijera = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Uspesi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Identifikacija = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label1 = new System.Windows.Forms.Label();
             this.TbPanel.SuspendLayout();
             this.TpIgrac.SuspendLayout();
             this.TpReprezentacije.SuspendLayout();
             this.TpTakmicenja.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // TbPanel
@@ -66,11 +90,13 @@
             this.TbPanel.Controls.Add(this.TpIgrac);
             this.TbPanel.Controls.Add(this.TpReprezentacije);
             this.TbPanel.Controls.Add(this.TpTakmicenja);
+            this.TbPanel.Controls.Add(this.tabPage1);
+            this.TbPanel.Controls.Add(this.tabPage2);
             this.TbPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbPanel.Location = new System.Drawing.Point(12, 12);
             this.TbPanel.Name = "TbPanel";
             this.TbPanel.SelectedIndex = 0;
-            this.TbPanel.Size = new System.Drawing.Size(911, 437);
+            this.TbPanel.Size = new System.Drawing.Size(911, 451);
             this.TbPanel.TabIndex = 0;
             // 
             // TpIgrac
@@ -82,10 +108,20 @@
             this.TpIgrac.Location = new System.Drawing.Point(4, 25);
             this.TpIgrac.Name = "TpIgrac";
             this.TpIgrac.Padding = new System.Windows.Forms.Padding(3);
-            this.TpIgrac.Size = new System.Drawing.Size(903, 408);
+            this.TpIgrac.Size = new System.Drawing.Size(903, 422);
             this.TpIgrac.TabIndex = 0;
             this.TpIgrac.Text = "Igraci";
             this.TpIgrac.UseVisualStyleBackColor = true;
+            // 
+            // BtnIzmeniIgraca
+            // 
+            this.BtnIzmeniIgraca.Location = new System.Drawing.Point(6, 369);
+            this.BtnIzmeniIgraca.Name = "BtnIzmeniIgraca";
+            this.BtnIzmeniIgraca.Size = new System.Drawing.Size(202, 33);
+            this.BtnIzmeniIgraca.TabIndex = 2;
+            this.BtnIzmeniIgraca.Text = "Izmeni igraca";
+            this.BtnIzmeniIgraca.UseVisualStyleBackColor = true;
+            this.BtnIzmeniIgraca.Click += new System.EventHandler(this.BtnIzmeniIgraca_Click);
             // 
             // BtnIzbrisiIgraca
             // 
@@ -161,14 +197,24 @@
             this.TpReprezentacije.Location = new System.Drawing.Point(4, 25);
             this.TpReprezentacije.Name = "TpReprezentacije";
             this.TpReprezentacije.Padding = new System.Windows.Forms.Padding(3);
-            this.TpReprezentacije.Size = new System.Drawing.Size(903, 408);
+            this.TpReprezentacije.Size = new System.Drawing.Size(903, 422);
             this.TpReprezentacije.TabIndex = 1;
             this.TpReprezentacije.Text = "Reprezentacije";
             this.TpReprezentacije.UseVisualStyleBackColor = true;
             // 
+            // BtnIzmeniReprezentaciju
+            // 
+            this.BtnIzmeniReprezentaciju.Location = new System.Drawing.Point(6, 370);
+            this.BtnIzmeniReprezentaciju.Name = "BtnIzmeniReprezentaciju";
+            this.BtnIzmeniReprezentaciju.Size = new System.Drawing.Size(188, 32);
+            this.BtnIzmeniReprezentaciju.TabIndex = 2;
+            this.BtnIzmeniReprezentaciju.Text = "Izmeni reprezentaciju";
+            this.BtnIzmeniReprezentaciju.UseVisualStyleBackColor = true;
+            this.BtnIzmeniReprezentaciju.Click += new System.EventHandler(this.BtnIzmeniReprezentaciju_Click);
+            // 
             // BtnIzbrisiReprezentaciju
             // 
-            this.BtnIzbrisiReprezentaciju.Location = new System.Drawing.Point(716, 369);
+            this.BtnIzbrisiReprezentaciju.Location = new System.Drawing.Point(672, 370);
             this.BtnIzbrisiReprezentaciju.Name = "BtnIzbrisiReprezentaciju";
             this.BtnIzbrisiReprezentaciju.Size = new System.Drawing.Size(181, 33);
             this.BtnIzbrisiReprezentaciju.TabIndex = 1;
@@ -222,10 +268,20 @@
             this.TpTakmicenja.Location = new System.Drawing.Point(4, 25);
             this.TpTakmicenja.Name = "TpTakmicenja";
             this.TpTakmicenja.Padding = new System.Windows.Forms.Padding(3);
-            this.TpTakmicenja.Size = new System.Drawing.Size(903, 408);
+            this.TpTakmicenja.Size = new System.Drawing.Size(903, 422);
             this.TpTakmicenja.TabIndex = 2;
             this.TpTakmicenja.Text = "Takmicenja";
             this.TpTakmicenja.UseVisualStyleBackColor = true;
+            // 
+            // BtnIzmeniTakmicenje
+            // 
+            this.BtnIzmeniTakmicenje.Location = new System.Drawing.Point(3, 369);
+            this.BtnIzmeniTakmicenje.Name = "BtnIzmeniTakmicenje";
+            this.BtnIzmeniTakmicenje.Size = new System.Drawing.Size(225, 33);
+            this.BtnIzmeniTakmicenje.TabIndex = 2;
+            this.BtnIzmeniTakmicenje.Text = "Izmeni takmicenje";
+            this.BtnIzmeniTakmicenje.UseVisualStyleBackColor = true;
+            this.BtnIzmeniTakmicenje.Click += new System.EventHandler(this.BtnIzmeniTakmicenje_Click);
             // 
             // BtnIzbrisiTakmicenje
             // 
@@ -240,9 +296,12 @@
             // LvTakmicanja
             // 
             this.LvTakmicanja.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader12,
-            this.columnHeader13,
-            this.columnHeader14});
+            this.Ime_takmicenja,
+            this.Opis,
+            this.Spisak_drzava,
+            this.Sistem_igranja,
+            this.Poslednji_pobednik,
+            this.Statistika});
             this.LvTakmicanja.FullRowSelect = true;
             this.LvTakmicanja.GridLines = true;
             this.LvTakmicanja.Location = new System.Drawing.Point(3, 6);
@@ -253,58 +312,194 @@
             this.LvTakmicanja.UseCompatibleStateImageBehavior = false;
             this.LvTakmicanja.View = System.Windows.Forms.View.Details;
             // 
-            // columnHeader12
+            // Ime_takmicenja
             // 
-            this.columnHeader12.Text = "Ime";
-            this.columnHeader12.Width = 183;
+            this.Ime_takmicenja.Text = "Ime";
+            this.Ime_takmicenja.Width = 149;
             // 
-            // columnHeader13
+            // Opis
             // 
-            this.columnHeader13.Width = 160;
+            this.Opis.Text = "Opis";
+            this.Opis.Width = 142;
             // 
-            // BtnIzmeniIgraca
+            // Spisak_drzava
             // 
-            this.BtnIzmeniIgraca.Location = new System.Drawing.Point(6, 369);
-            this.BtnIzmeniIgraca.Name = "BtnIzmeniIgraca";
-            this.BtnIzmeniIgraca.Size = new System.Drawing.Size(202, 33);
-            this.BtnIzmeniIgraca.TabIndex = 2;
-            this.BtnIzmeniIgraca.Text = "Izmeni igraca";
-            this.BtnIzmeniIgraca.UseVisualStyleBackColor = true;
-            this.BtnIzmeniIgraca.Click += new System.EventHandler(this.BtnIzmeniIgraca_Click);
+            this.Spisak_drzava.Text = "Spisak_drzava";
+            this.Spisak_drzava.Width = 121;
             // 
-            // BtnIzmeniReprezentaciju
+            // Sistem_igranja
             // 
-            this.BtnIzmeniReprezentaciju.Location = new System.Drawing.Point(6, 370);
-            this.BtnIzmeniReprezentaciju.Name = "BtnIzmeniReprezentaciju";
-            this.BtnIzmeniReprezentaciju.Size = new System.Drawing.Size(188, 32);
-            this.BtnIzmeniReprezentaciju.TabIndex = 2;
-            this.BtnIzmeniReprezentaciju.Text = "Izmeni reprezentaciju";
-            this.BtnIzmeniReprezentaciju.UseVisualStyleBackColor = true;
-            this.BtnIzmeniReprezentaciju.Click += new System.EventHandler(this.BtnIzmeniReprezentaciju_Click);
+            this.Sistem_igranja.Text = "Sistem_igranja";
+            this.Sistem_igranja.Width = 137;
             // 
-            // BtnIzmeniTakmicenje
+            // Poslednji_pobednik
             // 
-            this.BtnIzmeniTakmicenje.Location = new System.Drawing.Point(3, 369);
-            this.BtnIzmeniTakmicenje.Name = "BtnIzmeniTakmicenje";
-            this.BtnIzmeniTakmicenje.Size = new System.Drawing.Size(225, 33);
-            this.BtnIzmeniTakmicenje.TabIndex = 2;
-            this.BtnIzmeniTakmicenje.Text = "Izmeni takmicenje";
-            this.BtnIzmeniTakmicenje.UseVisualStyleBackColor = true;
-            this.BtnIzmeniTakmicenje.Click += new System.EventHandler(this.BtnIzmeniTakmicenje_Click);
+            this.Poslednji_pobednik.Text = "Poslednji_pobednik";
+            this.Poslednji_pobednik.Width = 137;
+            // 
+            // Statistika
+            // 
+            this.Statistika.Text = "Statistika";
+            this.Statistika.Width = 244;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.LVStadioni);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(903, 422);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Stadioni";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(302, 370);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(208, 41);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Obrisi stadion";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // LVStadioni
+            // 
+            this.LVStadioni.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Ime,
+            this.Lokacija,
+            this.Kapacitet,
+            this.Vlasnik,
+            this.Istorija});
+            this.LVStadioni.Location = new System.Drawing.Point(3, 3);
+            this.LVStadioni.Name = "LVStadioni";
+            this.LVStadioni.Size = new System.Drawing.Size(897, 361);
+            this.LVStadioni.TabIndex = 0;
+            this.LVStadioni.UseCompatibleStateImageBehavior = false;
+            this.LVStadioni.View = System.Windows.Forms.View.Details;
+            // 
+            // Ime
+            // 
+            this.Ime.Text = "Ime";
+            // 
+            // Lokacija
+            // 
+            this.Lokacija.DisplayIndex = 3;
+            this.Lokacija.Text = "Lokacija";
+            // 
+            // Kapacitet
+            // 
+            this.Kapacitet.DisplayIndex = 1;
+            this.Kapacitet.Text = "Kapacitet";
+            // 
+            // Vlasnik
+            // 
+            this.Vlasnik.DisplayIndex = 2;
+            this.Vlasnik.Text = "Vlasnik";
+            // 
+            // Istorija
+            // 
+            this.Istorija.Text = "Istorija";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Controls.Add(this.LVTreneri);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(903, 422);
+            this.tabPage2.TabIndex = 4;
+            this.tabPage2.Text = "Treneri";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(345, 380);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(208, 36);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Obrisi trenera";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // LVTreneri
+            // 
+            this.LVTreneri.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Identifikacija,
+            this.PunoIme,
+            this.Datum_rodjenja,
+            this.Mesto_rodjenja,
+            this.Trenutni_klub,
+            this.Trenerska_karijera,
+            this.Uspesi});
+            this.LVTreneri.Location = new System.Drawing.Point(3, 3);
+            this.LVTreneri.Name = "LVTreneri";
+            this.LVTreneri.Size = new System.Drawing.Size(897, 371);
+            this.LVTreneri.TabIndex = 1;
+            this.LVTreneri.UseCompatibleStateImageBehavior = false;
+            this.LVTreneri.View = System.Windows.Forms.View.Details;
+            // 
+            // PunoIme
+            // 
+            this.PunoIme.Text = "PunoIme";
+            // 
+            // Datum_rodjenja
+            // 
+            this.Datum_rodjenja.Text = "Datum_rodjenja";
+            // 
+            // Mesto_rodjenja
+            // 
+            this.Mesto_rodjenja.DisplayIndex = 5;
+            this.Mesto_rodjenja.Text = "Mesto_rodjenja";
+            // 
+            // Trenutni_klub
+            // 
+            this.Trenutni_klub.DisplayIndex = 3;
+            this.Trenutni_klub.Text = "Trenutni_klub";
+            // 
+            // Trenerska_karijera
+            // 
+            this.Trenerska_karijera.DisplayIndex = 4;
+            this.Trenerska_karijera.Text = "Trenerska_karijera";
+            // 
+            // Uspesi
+            // 
+            this.Uspesi.Text = "Uspesi";
+            // 
+            // Identifikacija
+            // 
+            this.Identifikacija.Text = "Id";
+            this.Identifikacija.Width = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(153, 485);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(271, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Dodati brisanje slika i muzike iz gridFS-a kad se to doda!";
             // 
             // FBrisanjeIzmenaPodataka
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 461);
+            this.ClientSize = new System.Drawing.Size(935, 542);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.TbPanel);
             this.Name = "FBrisanjeIzmenaPodataka";
             this.Text = "FBrisanjePodataka";
+            this.Shown += new System.EventHandler(this.FBrisanjeIzmenaPodataka_Shown);
             this.TbPanel.ResumeLayout(false);
             this.TpIgrac.ResumeLayout(false);
             this.TpReprezentacije.ResumeLayout(false);
             this.TpTakmicenja.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -331,11 +526,33 @@
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.Button BtnIzbrisiTakmicenje;
         private System.Windows.Forms.ListView LvTakmicanja;
-        private System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.ColumnHeader columnHeader13;
-        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.ColumnHeader Ime_takmicenja;
+        private System.Windows.Forms.ColumnHeader Opis;
+        private System.Windows.Forms.ColumnHeader Spisak_drzava;
         private System.Windows.Forms.Button BtnIzmeniIgraca;
         private System.Windows.Forms.Button BtnIzmeniReprezentaciju;
         private System.Windows.Forms.Button BtnIzmeniTakmicenje;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ListView LVStadioni;
+        private System.Windows.Forms.ColumnHeader Ime;
+        private System.Windows.Forms.ColumnHeader Kapacitet;
+        private System.Windows.Forms.ColumnHeader Vlasnik;
+        private System.Windows.Forms.ColumnHeader Lokacija;
+        private System.Windows.Forms.ListView LVTreneri;
+        private System.Windows.Forms.ColumnHeader PunoIme;
+        private System.Windows.Forms.ColumnHeader Datum_rodjenja;
+        private System.Windows.Forms.ColumnHeader Trenutni_klub;
+        private System.Windows.Forms.ColumnHeader Trenerska_karijera;
+        private System.Windows.Forms.ColumnHeader Mesto_rodjenja;
+        private System.Windows.Forms.ColumnHeader Uspesi;
+        private System.Windows.Forms.ColumnHeader Istorija;
+        private System.Windows.Forms.ColumnHeader Sistem_igranja;
+        private System.Windows.Forms.ColumnHeader Poslednji_pobednik;
+        private System.Windows.Forms.ColumnHeader Statistika;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ColumnHeader Identifikacija;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson.Serialization.IdGenerators;
 
 namespace MongoDB.DomainModel
 {
@@ -13,8 +16,9 @@ namespace MongoDB.DomainModel
 
         public long id { get; set; }
 
-        public String Id { get; set; }
-
+       // public String Id { get; set; }
+        [BsonId]
+        public ObjectId _id { get; set; }
         public String PunoIme { get; set; }
 /*
         public DateTime DatumRodjenja { get; set; }

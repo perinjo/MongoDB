@@ -141,34 +141,37 @@ namespace MongoDriverTest
             // ---- Ubacujemo podatke u objekat ----
             Igrac noviIgrac = new Igrac();
             // ---- Licni podaci ----
-            noviIgrac.PunoIme = checkString(TbPunoIme.Text);
-            noviIgrac.MestoRodjenja = checkString(TbMestoRodjenja.Text);
+            noviIgrac.PunoIme = StringCleaner.checkString(TbPunoIme.Text);
+            noviIgrac.MestoRodjenja = StringCleaner.checkString(TbMestoRodjenja.Text);
             noviIgrac.DatumRodjenja = DpDatumRodjenja.Text; /*Treba se ispravi*/
-            noviIgrac.Visina = TbVisina.Text;
-            noviIgrac.TrenutniKlub = checkString(TbTrenutniKlub.Text);
-            noviIgrac.Pozicija = pozicije;
+            noviIgrac.Visina = StringCleaner.checkString(TbVisina.Text);
+            noviIgrac.TrenutniKlub = StringCleaner.checkString(TbTrenutniKlub.Text);
+            noviIgrac.Pozicija = StringCleaner.checkString(pozicije);
             // ---- Ostali podaci ----
-            noviIgrac.SportskaBiografija = checkString(RtbSportksaBiografija.Text);
-            noviIgrac.ReprezentativnaKarijera = checkString(RtbReprezentativnaKarijera.Text);
-            noviIgrac.Statistika = checkString(RtbStatistika.Text);
-            noviIgrac.Trofeji = checkString(RtbTrofeji.Text);
+            noviIgrac.SportskaBiografija = StringCleaner.checkString(RtbSportksaBiografija.Text);
+            noviIgrac.ReprezentativnaKarijera = StringCleaner.checkString(RtbReprezentativnaKarijera.Text);
+            noviIgrac.Statistika = StringCleaner.checkString(RtbStatistika.Text);
+            noviIgrac.Trofeji = StringCleaner.checkString(RtbTrofeji.Text);
 
             // ------------------ID------------------------
-            noviIgrac.Id = "1";
+
+
+            //noviIgrac.Id = new BsonObjectId("");
+            
             //----------------------------------------------
 
             // ---- Rad sa bazom ----
             try
             {
                 var _client = new MongoClient();
-                var _database = _client.GetDatabase("preduzece");
+                var _database = _client.GetDatabase("test");
 
-                var collection = _database.GetCollection<BsonDocument>("radnici");
+                var collection = _database.GetCollection<BsonDocument>("igraci");
                 var filter = new BsonDocument();
                 var document = noviIgrac.ToBsonDocument();
                 collection.InsertOne(document);
                 MessageBox.Show("Uspesno dodat novi igrac!");
-
+                
                 // ---- Zatvaranje forme ----
                 this.Dispose();
             }
@@ -179,16 +182,7 @@ namespace MongoDriverTest
             
         }
 
-        public string checkString(string stringToCheck)
-        {
-            stringToCheck = Regex.Replace(stringToCheck, @"\t|\r", " ");
-            stringToCheck = Regex.Replace(stringToCheck, @"( \n){2,}", "\n");
-            stringToCheck = Regex.Replace(stringToCheck, " {2,}", " ");
-
-            stringToCheck = stringToCheck.Trim();
-
-            return stringToCheck;
-        }
+       
 
         private void BtnUcitajSliku_Click(object sender, EventArgs e)
         {
@@ -199,7 +193,7 @@ namespace MongoDriverTest
             {
                 fs = new System.IO.FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
                 slika = Image.FromStream(fs);
-                PbSlikaIgraca.Image = Image.FromStream(fs);
+                //PbSlikaIgraca.Image = Image.FromStream(fs);
 
                 int duzina = Convert.ToInt32(fs.Length);
                 byte[] bajtovi = new byte[duzina];

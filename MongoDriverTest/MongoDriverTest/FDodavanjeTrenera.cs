@@ -62,6 +62,41 @@ namespace MongoDriverTest.DomainModel
                 MessageBox.Show("Unesi trenutni klub(reprezentaciju) koju trenira trener!");
                 return;
             }
+            Trener forSave = new Trener();
+            forSave.PunoIme = StringCleaner.checkString(TbPunoIme.Text);
+            forSave.MestoRodjenja = StringCleaner.checkString(TbMestoRodjenja.Text);
+            forSave.TrenutniKlub = StringCleaner.checkString(TbTrenutniKlub.Text);
+            forSave.TrenerskaKarijera = StringCleaner.checkString(RtbTrenerskaKarijera.Text);
+            forSave.Uspesi = StringCleaner.checkString(RtbUspesi.Text);
+            forSave.DatumRodjenja = StringCleaner.checkString(dateTimePicker1.Value.ToShortDateString());
+
+            var _client = new MongoClient();
+            var _database = _client.GetDatabase("test");
+
+            var collection = _database.GetCollection<BsonDocument>("treneri");
+            var filter = new BsonDocument() 
+            {
+                {"PunoIme",TbPunoIme.Text}
+            };
+
+            var filterForUniqueCheck = Builders<BsonDocument>.Filter.Eq("PunoIme", this.TbPunoIme.Text);
+
+            var document = forSave.ToBsonDocument();
+            //test if  exists
+            var test = collection.Find(filterForUniqueCheck).Count();
+
+            if(test == 0)
+            {
+                collection.InsertOne(document);
+                MessageBox.Show("Uspesno dodat novi trener!");
+            }
+            else
+            {
+                collection.ReplaceOne(filter, document);
+                MessageBox.Show("Uspesno azuriran trener!");
+            }
+            
+            
         }
     }
 }
