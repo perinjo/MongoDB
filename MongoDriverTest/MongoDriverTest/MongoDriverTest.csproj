@@ -109,7 +109,7 @@
     </Compile>
     <Compile Include="FInfoZaMec.Designer.cs">
       <DependentUpon>FInfoZaMec.cs</DependentUpon>
-
+    </Compile>
     <Compile Include="FFudbalskaIgra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,7 +154,7 @@
 
     <EmbeddedResource Include="FInfoZaMec.resx">
       <DependentUpon>FInfoZaMec.cs</DependentUpon>
-
+	</EmbeddedResource>
     <EmbeddedResource Include="FFudbalskaIgra.resx">
       <DependentUpon>FFudbalskaIgra.cs</DependentUpon>
 
