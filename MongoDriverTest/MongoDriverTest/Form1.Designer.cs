@@ -41,6 +41,8 @@
             this.igraciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.takmicenjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brisanjeIIzmenaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.infoFormaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stadionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -48,6 +50,8 @@
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.trenerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
@@ -129,8 +133,12 @@
             this.reprezentacijeToolStripMenuItem,
             this.igraciToolStripMenuItem,
             this.takmicenjaToolStripMenuItem,
-            this.brisanjeIIzmenaToolStripMenuItem});
+            this.brisanjeIIzmenaToolStripMenuItem,
+            this.infoFormaToolStripMenuItem,
+            this.stadionToolStripMenuItem,
+            this.trenerToolStripMenuItem});
             this.browseToolStripMenuItem.Name = "browseToolStripMenuItem";
+            this.browseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
             this.browseToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.browseToolStripMenuItem.Text = "Browse";
             this.browseToolStripMenuItem.Click += new System.EventHandler(this.browseToolStripMenuItem_Click);
@@ -166,6 +174,22 @@
             this.brisanjeIIzmenaToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.brisanjeIIzmenaToolStripMenuItem.Text = "Brisanje i izmena";
             this.brisanjeIIzmenaToolStripMenuItem.Click += new System.EventHandler(this.brisanjeIIzmenaToolStripMenuItem_Click);
+            // 
+            // infoFormaToolStripMenuItem
+            // 
+            this.infoFormaToolStripMenuItem.Name = "infoFormaToolStripMenuItem";
+            this.infoFormaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D3)));
+            this.infoFormaToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.infoFormaToolStripMenuItem.Text = "Info forma";
+            this.infoFormaToolStripMenuItem.Click += new System.EventHandler(this.infoFormaToolStripMenuItem_Click);
+            // 
+            // stadionToolStripMenuItem
+            // 
+            this.stadionToolStripMenuItem.Name = "stadionToolStripMenuItem";
+            this.stadionToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D4)));
+            this.stadionToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.stadionToolStripMenuItem.Text = "Stadion";
+            this.stadionToolStripMenuItem.Click += new System.EventHandler(this.stadionToolStripMenuItem_Click);
             // 
             // pictureBox1
             // 
@@ -234,11 +258,30 @@
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(252, 371);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(98, 39);
+            this.button12.TabIndex = 14;
+            this.button12.Text = "GridFS Testing";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // trenerToolStripMenuItem
+            // 
+            this.trenerToolStripMenuItem.Name = "trenerToolStripMenuItem";
+            this.trenerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.trenerToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.trenerToolStripMenuItem.Text = "Trener";
+            this.trenerToolStripMenuItem.Click += new System.EventHandler(this.trenerToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1217, 609);
+            this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.axWindowsMediaPlayer1);
@@ -287,6 +330,10 @@
         private System.Windows.Forms.ToolStripMenuItem takmicenjaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem brisanjeIIzmenaToolStripMenuItem;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.ToolStripMenuItem infoFormaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stadionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem trenerToolStripMenuItem;
     }
 }
 

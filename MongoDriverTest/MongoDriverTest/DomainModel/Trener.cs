@@ -9,7 +9,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace MongoDriverTest.DomainModel
 {
-    class Trener
+    public class Trener
     {
         [BsonId]
         public ObjectId _id { get; set; }

@@ -4,11 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 
 namespace MongoDB.DomainModel
 {
-    class Reprezentacija
+    public class Reprezentacija
     {
+        [BsonId]
+        public ObjectId _id { get; set; }
         // ---- Osnovni podaci ----
         public long id { get; set; }
         public String Ime { get; set; }

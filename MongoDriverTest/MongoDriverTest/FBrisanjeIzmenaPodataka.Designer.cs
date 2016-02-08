@@ -69,13 +69,13 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.LVTreneri = new System.Windows.Forms.ListView();
+            this.Identifikacija = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PunoIme = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Datum_rodjenja = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Mesto_rodjenja = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Trenutni_klub = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Trenerska_karijera = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Uspesi = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Identifikacija = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.TbPanel.SuspendLayout();
             this.TpIgrac.SuspendLayout();
@@ -368,9 +368,9 @@
             // 
             this.LVStadioni.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Ime,
-            this.Lokacija,
             this.Kapacitet,
             this.Vlasnik,
+            this.Lokacija,
             this.Istorija});
             this.LVStadioni.Location = new System.Drawing.Point(3, 3);
             this.LVStadioni.Name = "LVStadioni";
@@ -385,17 +385,14 @@
             // 
             // Lokacija
             // 
-            this.Lokacija.DisplayIndex = 3;
             this.Lokacija.Text = "Lokacija";
             // 
             // Kapacitet
             // 
-            this.Kapacitet.DisplayIndex = 1;
             this.Kapacitet.Text = "Kapacitet";
             // 
             // Vlasnik
             // 
-            this.Vlasnik.DisplayIndex = 2;
             this.Vlasnik.Text = "Vlasnik";
             // 
             // Istorija
@@ -441,6 +438,11 @@
             this.LVTreneri.UseCompatibleStateImageBehavior = false;
             this.LVTreneri.View = System.Windows.Forms.View.Details;
             // 
+            // Identifikacija
+            // 
+            this.Identifikacija.Text = "Id";
+            this.Identifikacija.Width = 0;
+            // 
             // PunoIme
             // 
             this.PunoIme.Text = "PunoIme";
@@ -467,11 +469,6 @@
             // Uspesi
             // 
             this.Uspesi.Text = "Uspesi";
-            // 
-            // Identifikacija
-            // 
-            this.Identifikacija.Text = "Id";
-            this.Identifikacija.Width = 0;
             // 
             // label1
             // 

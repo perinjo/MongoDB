@@ -31,3 +31,4 @@ C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debu
 C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\MongoDriverTest.pdb
 C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\bin\Debug\AxInterop.WMPLib.dll
 C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.csprojResolveAssemblyReference.cache
+C:\Users\Darko\Documents\GitHub\MongoDB\MongoDriverTest\MongoDriverTest\obj\Debug\MongoDriverTest.FInfoZaMec.resources

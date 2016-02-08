@@ -171,6 +171,7 @@
             this.PbSlikaTrenera.Location = new System.Drawing.Point(149, 205);
             this.PbSlikaTrenera.Name = "PbSlikaTrenera";
             this.PbSlikaTrenera.Size = new System.Drawing.Size(161, 96);
+            this.PbSlikaTrenera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PbSlikaTrenera.TabIndex = 14;
             this.PbSlikaTrenera.TabStop = false;
             // 

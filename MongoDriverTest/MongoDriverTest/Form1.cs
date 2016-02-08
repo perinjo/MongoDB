@@ -17,6 +17,7 @@ using MongoDB.Driver.Builders;
 using System.Media;
 using WMPLib;
 using MongoDB.DomainModel;
+using MongoDriverTest.DomainModel;
 namespace MongoDriverTest
 {
     public partial class Form1 : Form
@@ -126,29 +127,30 @@ namespace MongoDriverTest
         {
             //MemoryStream mem = new MemoryStream();
 
-            Image image = Image.FromFile("E:\\a za fax\\VII semestar\\Grafika\\ASHSEN512.BMP");
-            byte[] data;
-            MemoryStream m = new MemoryStream();
+            Image image = Image.FromFile("E:\\a za fax\\VII semestar\\Grafika\\Sky.jpg");
+            AuxLib.AddImageToGridFS(image, "nebo", "jpg");
+           // byte[] data;
+           // MemoryStream m = new MemoryStream();
            
-            image.Save(m, image.RawFormat);
-            data = m.ToArray();
+           // image.Save(m, image.RawFormat);
+           // data = m.ToArray();
            
-            string host = "localhost";
-            int port = 27017;
-            string databaseName = "docs";
+           // string host = "localhost";
+           // int port = 27017;
+           // string databaseName = "docs";
 
-            var _client = new MongoClient();
-           // var _database = (MongoDatabase)_client.GetDatabase("docs");
+           // var _client = new MongoClient();
+           //// var _database = (MongoDatabase)_client.GetDatabase("docs");
 
 
 
-            var grid = new MongoGridFS(new MongoServer(new MongoServerSettings { Server = new MongoServerAddress(host, port) }), databaseName, new MongoGridFSSettings());
+           // var grid = new MongoGridFS(new MongoServer(new MongoServerSettings { Server = new MongoServerAddress(host, port) }), databaseName, new MongoGridFSSettings());
             
-            grid.Upload(m, "Test", new MongoGridFSCreateOptions
-            {
-                Id = 1,
-                ContentType = "image/bmp"
-            });
+           // grid.Upload(m, "Test", new MongoGridFSCreateOptions
+           // {
+           //     Id = 1,
+           //     ContentType = "image/bmp"
+           // });
 
 
 
@@ -162,45 +164,54 @@ namespace MongoDriverTest
             //database.GridFS.SetMetadata(gfsi, photoMetadata);
             //book.ImageId = gfsi.Id.AsObjectId;
             //collection.Insert(book);
-            MessageBox.Show("Added book with picture.");
+            MessageBox.Show("Added drvo in GridFS.");
             
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            string host = "localhost";
-            int port = 27017;
-            string databaseName = "docs";
+            //string host = "localhost";
+            //int port = 27017;
+            //string databaseName = "docs";
 
-            var _client = new MongoClient();
-            // var _database = (MongoDatabase)_client.GetDatabase("docs");
+            //var _client = new MongoClient();
+            //// var _database = (MongoDatabase)_client.GetDatabase("docs");
 
            
-            MemoryStream m = new MemoryStream();
+            //MemoryStream m = new MemoryStream();
             
-            var grid = new MongoGridFS(new MongoServer(new MongoServerSettings { Server = new MongoServerAddress(host, port) }), databaseName, new MongoGridFSSettings());
+            //var grid = new MongoGridFS(new MongoServer(new MongoServerSettings { Server = new MongoServerAddress(host, port) }), databaseName, new MongoGridFSSettings());
 
-            var file = grid.FindOne("Test");
-            //MongoGridFSStream read = grid.OpenRead("Test");
-            //read.CopyTo(m);
-             Image slika;
-            var newFileName = "D:\\new_Untitled.png";
-            using (var stream = file.OpenRead())
-            {
-                var bytes = new byte[stream.Length];
-                stream.Read(bytes, 0, (int)stream.Length);
+            //var file = grid.FindOne("Test");
+            ////MongoGridFSStream read = grid.OpenRead("Test");
+            ////read.CopyTo(m);
+            //Image slika;
+            //var newFileName = "D:\\new_Untitled.jpg";
+            //using (var stream = file.OpenRead())
+            //{
+            //    var bytes = new byte[stream.Length];
+            //    stream.Read(bytes, 0, (int)stream.Length);
                 
                 
                
-                using (var newFs = new FileStream(newFileName, FileMode.Create))
-                {
+            //    using (var newFs = new FileStream(newFileName, FileMode.Create))
+            //    {
                     
-                    newFs.Write(bytes, 0, bytes.Length);
-                    //slika = Image.FromStream(newFs);
-                } 
-            }
-            
-          
+            //        newFs.Write(bytes, 0, bytes.Length);
+            //        //slika = Image.FromStream(newFs);
+            //    } 
+            //}
+
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("docs");
+            var fs = new GridFSBucket(database);
+
+            //var aaa = fs.Find()
+            var test = fs.DownloadAsBytesByName("nebo");
+
+            MemoryStream stream = new MemoryStream(test);
+
+            this.pictureBox1.Image = Image.FromStream(stream);
 
             
            
@@ -280,9 +291,14 @@ namespace MongoDriverTest
                 stream = new System.IO.FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
                 //SoundPlayer simpleSound = new SoundPlayer(stream);
                 //simpleSound.Play();
-
+                var split = ofd.SafeFileName.Split('.');
+                if(split[1] != "mp3")
+                {
+                    MessageBox.Show("Izaberite mp3 fajl!");
+                    return;
+                }
                 GridFSUploadOptions opcije = new GridFSUploadOptions();
-                opcije.ContentType = "audio/wav";
+                opcije.ContentType = "audio/mp3";
                 opcije.ChunkSizeBytes = Convert.ToInt32(stream.Length)/4;
 
                 int duzina = Convert.ToInt32(stream.Length);
@@ -398,6 +414,35 @@ namespace MongoDriverTest
 
             collection.InsertOne(bsn);
 
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void infoFormaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reprezentacija r1 = new Reprezentacija();
+            r1.Ime = "Srbija";
+            Reprezentacija r2 = new Reprezentacija();
+            r2.Ime = "Nemacka";
+            Stadion s1 = new Stadion();
+            s1.Ime = "Test";
+            FInfoZaMec test = new FInfoZaMec(r1,r2,s1);
+            test.ShowDialog();
+        }
+
+        private void stadionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FDodavanjeStadiona test = new FDodavanjeStadiona();
+            test.ShowDialog();
+        }
+
+        private void trenerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FDodavanjeTrenera test = new FDodavanjeTrenera();
+            test.ShowDialog();
         }
     }
 }

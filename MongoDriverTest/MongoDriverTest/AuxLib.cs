@@ -1,9 +1,12 @@
 ﻿using MongoDB.Bson;
 using MongoDB.DomainModel;
 using MongoDB.Driver;
+using MongoDB.Driver.GridFS;
 using MongoDriverTest.DomainModel;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -144,6 +147,120 @@ namespace MongoDriverTest
                 lv1.SubItems.Add(doc.Uspesi);
                 LVForAdding.Items.Add(lv1);
             }
+        }
+
+        public static bool AddImageToGridFS(Image slika,string imeSlike,string format)
+        {
+            try
+            {
+                //provera da li postoji slika
+                //var client = new MongoClient("mongodb://localhost");
+                //var database = client.GetDatabase("docs");
+                //var fs = new GridFSBucket(database);
+
+                //var test = fs.DownloadAsBytesByName(imeSlike);
+                
+                
+                byte[] data;
+                MemoryStream stream = new MemoryStream();
+
+
+                slika.Save(stream, slika.RawFormat);
+                data = stream.ToArray();
+
+                //string host = "localhost";
+                //int port = 27017;
+                //string databaseName = "docs";
+
+                //var _client = new MongoClient();
+                // var _database = (MongoDatabase)_client.GetDatabase("docs");
+
+                var client = new MongoClient("mongodb://localhost");
+                var database = client.GetDatabase("docs");
+                var fs = new GridFSBucket(database);
+                GridFSUploadOptions opcije = new GridFSUploadOptions();
+
+                opcije.ContentType = "image/"+format;
+                opcije.ChunkSizeBytes = Convert.ToInt32(stream.Length) / 4;
+
+                fs.UploadFromBytes(imeSlike, data, opcije);
+
+                //var grid = new MongoGridFS(new MongoServer(new MongoServerSettings { Server = new MongoServerAddress(host, port) }), databaseName, new MongoGridFSSettings());
+
+               // grid.Upload(m, imeSlike, new MongoGridFSCreateOptions
+                //{
+                    //Id = 1,
+               //     ContentType = "image/"+format
+               // });
+
+                return true;
+            }
+           catch(Exception ex)
+           {
+               MessageBox.Show(ex.Message);
+               return false;
+           }
+        }
+
+        public static Image LoadImageFromGridFS(string imeSlike)
+        {
+            try
+            {
+                var client = new MongoClient("mongodb://localhost");
+                var database = client.GetDatabase("docs");
+                var fs = new GridFSBucket(database);
+
+                
+                var data = fs.DownloadAsBytesByName(imeSlike);
+
+                MemoryStream stream = new MemoryStream(data);
+
+                return Image.FromStream(stream);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        public static bool AddSoundToGridFS(FileStream stream,string imePesme,string format)
+        {
+            try
+            {
+                var client = new MongoClient("mongodb://localhost");
+                var database = client.GetDatabase("docs");
+                var fs = new GridFSBucket(database);
+
+                GridFSUploadOptions opcije = new GridFSUploadOptions();
+                opcije.ContentType = "audio/"+format;
+                opcije.ChunkSizeBytes = Convert.ToInt32(stream.Length) / 4;
+                
+                int duzina = Convert.ToInt32(stream.Length);
+                byte[] bajtovi = new byte[duzina];
+                stream.Seek(0, SeekOrigin.Begin);
+                int bytesRead = stream.Read(bajtovi, 0, duzina);
+
+                fs.UploadFromBytes(imePesme, bajtovi, opcije);
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        public static byte[] LoadSoundFromGridFS(string reprezentacija)
+        {
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("docs");
+            var fs = new GridFSBucket(database);
+
+            var data = fs.DownloadAsBytesByName(reprezentacija);
+            
+            return data;
         }
     }
 }

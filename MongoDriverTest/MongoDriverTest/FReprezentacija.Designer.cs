@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button8 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.tbNajboljiStrelac = new System.Windows.Forms.TextBox();
@@ -54,6 +55,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.LvIgraci = new System.Windows.Forms.ListView();
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.rtbOsvojeneMedalje = new System.Windows.Forms.RichTextBox();
@@ -65,23 +74,19 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.LvIgraci = new System.Windows.Forms.ListView();
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button7 = new System.Windows.Forms.Button();
+            this.PBslikaReprezentacije = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFifaRang)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PBslikaReprezentacije)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.groupBox1.Controls.Add(this.button8);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.tbNajboljiStrelac);
@@ -107,6 +112,16 @@
             this.groupBox1.Text = "Napravi reprezentaciju";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(271, 640);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(208, 29);
+            this.button8.TabIndex = 24;
+            this.button8.Text = "Dodaj himnu";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -118,7 +133,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(125, 638);
+            this.button3.Location = new System.Drawing.Point(28, 640);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(221, 29);
             this.button3.TabIndex = 20;
@@ -290,7 +305,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(642, 417);
+            this.button1.Location = new System.Drawing.Point(526, 417);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(221, 29);
             this.button1.TabIndex = 15;
@@ -309,6 +324,61 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Svi igraci";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // LvIgraci
+            // 
+            this.LvIgraci.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader9,
+            this.columnHeader10,
+            this.columnHeader11,
+            this.columnHeader12,
+            this.columnHeader13,
+            this.columnHeader14,
+            this.columnHeader15});
+            this.LvIgraci.FullRowSelect = true;
+            this.LvIgraci.GridLines = true;
+            this.LvIgraci.Location = new System.Drawing.Point(12, 19);
+            this.LvIgraci.MultiSelect = false;
+            this.LvIgraci.Name = "LvIgraci";
+            this.LvIgraci.Size = new System.Drawing.Size(473, 337);
+            this.LvIgraci.TabIndex = 30;
+            this.LvIgraci.UseCompatibleStateImageBehavior = false;
+            this.LvIgraci.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "ID";
+            this.columnHeader9.Width = 0;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "Puno ime";
+            this.columnHeader10.Width = 83;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Mesto rodjenja";
+            this.columnHeader11.Width = 102;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Datum rodjenja";
+            this.columnHeader12.Width = 88;
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "Trenutni klub";
+            this.columnHeader13.Width = 53;
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "Visina";
+            this.columnHeader14.Width = 72;
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "Pozicija";
+            this.columnHeader15.Width = 130;
             // 
             // button4
             // 
@@ -334,7 +404,7 @@
             // 
             this.rtbOsvojeneMedalje.Location = new System.Drawing.Point(520, 468);
             this.rtbOsvojeneMedalje.Name = "rtbOsvojeneMedalje";
-            this.rtbOsvojeneMedalje.Size = new System.Drawing.Size(365, 96);
+            this.rtbOsvojeneMedalje.Size = new System.Drawing.Size(227, 96);
             this.rtbOsvojeneMedalje.TabIndex = 22;
             this.rtbOsvojeneMedalje.Text = "";
             // 
@@ -404,66 +474,32 @@
             // 
             this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
-            // LvIgraci
+            // button7
             // 
-            this.LvIgraci.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader9,
-            this.columnHeader10,
-            this.columnHeader11,
-            this.columnHeader12,
-            this.columnHeader13,
-            this.columnHeader14,
-            this.columnHeader15});
-            this.LvIgraci.FullRowSelect = true;
-            this.LvIgraci.GridLines = true;
-            this.LvIgraci.Location = new System.Drawing.Point(12, 19);
-            this.LvIgraci.MultiSelect = false;
-            this.LvIgraci.Name = "LvIgraci";
-            this.LvIgraci.Size = new System.Drawing.Size(473, 337);
-            this.LvIgraci.TabIndex = 30;
-            this.LvIgraci.UseCompatibleStateImageBehavior = false;
-            this.LvIgraci.View = System.Windows.Forms.View.Details;
+            this.button7.Location = new System.Drawing.Point(754, 417);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(220, 29);
+            this.button7.TabIndex = 30;
+            this.button7.Text = "Dodaj zastavu";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // columnHeader9
+            // PBslikaReprezentacije
             // 
-            this.columnHeader9.Text = "ID";
-            this.columnHeader9.Width = 0;
-            // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Text = "Puno ime";
-            this.columnHeader10.Width = 83;
-            // 
-            // columnHeader11
-            // 
-            this.columnHeader11.Text = "Mesto rodjenja";
-            this.columnHeader11.Width = 102;
-            // 
-            // columnHeader12
-            // 
-            this.columnHeader12.Text = "Datum rodjenja";
-            this.columnHeader12.Width = 88;
-            // 
-            // columnHeader13
-            // 
-            this.columnHeader13.Text = "Trenutni klub";
-            this.columnHeader13.Width = 53;
-            // 
-            // columnHeader14
-            // 
-            this.columnHeader14.Text = "Visina";
-            this.columnHeader14.Width = 72;
-            // 
-            // columnHeader15
-            // 
-            this.columnHeader15.Text = "Pozicija";
-            this.columnHeader15.Width = 130;
+            this.PBslikaReprezentacije.Location = new System.Drawing.Point(766, 468);
+            this.PBslikaReprezentacije.Name = "PBslikaReprezentacije";
+            this.PBslikaReprezentacije.Size = new System.Drawing.Size(208, 96);
+            this.PBslikaReprezentacije.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PBslikaReprezentacije.TabIndex = 31;
+            this.PBslikaReprezentacije.TabStop = false;
             // 
             // FReprezentacija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1013, 690);
+            this.Controls.Add(this.PBslikaReprezentacije);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label9);
@@ -485,6 +521,7 @@
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numFifaRang)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PBslikaReprezentacije)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -536,6 +573,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.ColumnHeader columnHeader14;
         private System.Windows.Forms.ColumnHeader columnHeader15;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.PictureBox PBslikaReprezentacije;
+        private System.Windows.Forms.Button button8;
 
 
     }

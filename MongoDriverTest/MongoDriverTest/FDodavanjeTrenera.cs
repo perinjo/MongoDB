@@ -19,6 +19,9 @@ namespace MongoDriverTest.DomainModel
 {
     public partial class FDodavanjeTrenera : Form
     {
+        private Image slikaTrenera;
+        private string format;
+        private string imeSlike;
         public FDodavanjeTrenera()
         {
             InitializeComponent();
@@ -27,13 +30,17 @@ namespace MongoDriverTest.DomainModel
         // ---- Ucitavanje slike -----
         private void BtnUcitajSlikuTrenera_Click(object sender, EventArgs e)
         {
-            Image slika;
+            //Image slika;
             FileStream fs;
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                var forSpliting = ofd.SafeFileName.Split('.');
+                imeSlike = forSpliting[0];
+                format = forSpliting[1];
+
                 fs = new System.IO.FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
-                slika = Image.FromStream(fs);
+                slikaTrenera = Image.FromStream(fs);
                 PbSlikaTrenera.Image = Image.FromStream(fs);
 
                 /*int duzina = Convert.ToInt32(fs.Length);
@@ -88,10 +95,16 @@ namespace MongoDriverTest.DomainModel
             if(test == 0)
             {
                 collection.InsertOne(document);
+                if (slikaTrenera != null)
+                {
+                    AuxLib.AddImageToGridFS(slikaTrenera, forSave.PunoIme, format);
+                }
+                
                 MessageBox.Show("Uspesno dodat novi trener!");
             }
             else
             {
+                //TO DO : URADITI UPDATE SLIKE (AuxLib treba da ima remove image i remove mp3 i da se izbaci slika i ubaci nova);
                 collection.ReplaceOne(filter, document);
                 MessageBox.Show("Uspesno azuriran trener!");
             }

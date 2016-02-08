@@ -4,11 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace MongoDB.DomainModel
 {
-    class Takmicenje
+    public class Takmicenje
     {
+        [BsonId]
+        public ObjectId _id { get; set; }
         public String Ime { get; set; }
         public String Opis { get; set; } /*Neki opis, sta god da je. Samo za sva da budu na istu foru*/
         public String SpisakDrzava { get; set; } /*Spisak reprezentacija koje ucestvuju na tom takmicenju, za FIFA su sve tako da tamo ne treba :)*/
