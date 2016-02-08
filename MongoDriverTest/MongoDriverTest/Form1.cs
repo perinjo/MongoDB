@@ -399,6 +399,7 @@ namespace MongoDriverTest
 
         private void button11_Click(object sender, EventArgs e)
         {
+
             var _client = new MongoClient();
             var _database = _client.GetDatabase("test");
             var collection = _database.GetCollection<BsonDocument>("testKolekcija");
@@ -443,6 +444,10 @@ namespace MongoDriverTest
         {
             FDodavanjeTrenera test = new FDodavanjeTrenera();
             test.ShowDialog();
+
+            FFudbalskaIgra ffi = new FFudbalskaIgra();
+            ffi.ShowDialog();
+
         }
     }
 }

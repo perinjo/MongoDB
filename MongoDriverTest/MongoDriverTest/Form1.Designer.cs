@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -41,20 +40,22 @@
             this.igraciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.takmicenjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brisanjeIIzmenaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+
             this.infoFormaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stadionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
+
             this.button12 = new System.Windows.Forms.Button();
             this.trenerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -175,6 +176,7 @@
             this.brisanjeIIzmenaToolStripMenuItem.Text = "Brisanje i izmena";
             this.brisanjeIIzmenaToolStripMenuItem.Click += new System.EventHandler(this.brisanjeIIzmenaToolStripMenuItem_Click);
             // 
+
             // infoFormaToolStripMenuItem
             // 
             this.infoFormaToolStripMenuItem.Name = "infoFormaToolStripMenuItem";
@@ -191,6 +193,7 @@
             this.stadionToolStripMenuItem.Text = "Stadion";
             this.stadionToolStripMenuItem.Click += new System.EventHandler(this.stadionToolStripMenuItem_Click);
             // 
+
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(122, 27);
@@ -229,15 +232,6 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
-            // axWindowsMediaPlayer1
-            // 
-            this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(743, 27);
-            this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
-            this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(371, 336);
-            this.axWindowsMediaPlayer1.TabIndex = 11;
-            // 
             // button10
             // 
             this.button10.Location = new System.Drawing.Point(26, 360);
@@ -249,6 +243,7 @@
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button11
+
             // 
             this.button11.Location = new System.Drawing.Point(26, 403);
             this.button11.Name = "button11";
@@ -275,16 +270,27 @@
             this.trenerToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.trenerToolStripMenuItem.Text = "Trener";
             this.trenerToolStripMenuItem.Click += new System.EventHandler(this.trenerToolStripMenuItem_Click);
+
+            // 
+            this.button11.Location = new System.Drawing.Point(365, 360);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(150, 23);
+            this.button11.TabIndex = 13;
+            this.button11.Text = "GLAVNA FORMA";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1217, 609);
+
             this.Controls.Add(this.button12);
+
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
-            this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
@@ -303,7 +309,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -324,16 +329,17 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
-        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.ToolStripMenuItem igraciToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem takmicenjaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem brisanjeIIzmenaToolStripMenuItem;
         private System.Windows.Forms.Button button11;
+
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.ToolStripMenuItem infoFormaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stadionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem trenerToolStripMenuItem;
+
     }
 }
 
