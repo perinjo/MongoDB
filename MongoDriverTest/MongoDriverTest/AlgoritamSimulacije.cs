@@ -4,6 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.IO;
+using MongoDB.DomainModel;
+using MongoDB.Driver;
+using MongoDB.Bson;
+using MongoDB.Driver.Builders;
+using MongoDB.Driver.Linq;
+using MongoDriverTest.DomainModel;
+using MongoDB.Driver.GridFS;
+using System.Windows.Forms;
 
 namespace MongoDriverTest
 {
@@ -376,6 +385,253 @@ namespace MongoDriverTest
                 Thread.Sleep(500);
             }
             return team;
+        }
+
+        public  void DaLiSteZnali(string igrime, string treime, string takime)
+        {
+            string imeIgraca= igrime;
+            string imeTrenera = treime;
+            string imeTakmicenja = takime;
+
+            Random rnd = new Random();
+            int choice = rnd.Next(1,11);
+    
+            //za igraca
+            var _client = new MongoClient();
+            var db = _client.GetDatabase("test");
+            var collection = db.GetCollection<Igrac>("igraci");
+            var filter = new BsonDocument();
+            var result = collection.Find(filter).FirstOrDefault<Igrac>();
+
+            //za trenera
+            var _client1 = new MongoClient();
+            var db1 = _client1.GetDatabase("test");
+            var collection1 = db1.GetCollection<Trener>("treneri");
+            var result1 = collection1.Find(filter).FirstOrDefault<Trener>();
+
+            //za takmicenje
+            var _client2 = new MongoClient();
+            var db2 = _client2.GetDatabase("test");
+            var collection2 = db2.GetCollection<Takmicenje>("takmicenja");
+            var result2 = collection2.Find(filter).FirstOrDefault<Takmicenje>();
+     
+            switch(choice)
+            {
+                case 1:
+                    
+                        if(result.PunoIme == imeIgraca)
+                        {
+                            if (result.SportskaBiografija != "")
+                            {
+                                MessageBox.Show("Da li ste znali da je " + result.PunoIme + "biografija : " + result.SportskaBiografija);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nema informacija!!");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ne postoji igrac sa zadatim imenom");
+                        }
+                                      
+                    break;
+                case 2:
+                   
+                        if (result.PunoIme == imeIgraca)
+                        {
+                            if (result.ReprezentativnaKarijera != "")
+                            {
+                                MessageBox.Show("Da li ste znali da je " + result.PunoIme + "imao : " + result.ReprezentativnaKarijera + "karijeru?");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nema informacija!!");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ne postoji igrac sa zadatim imenom");
+                        }
+                                       
+                    break;
+                case 3:
+                    
+                        if(result.PunoIme == imeIgraca)
+                        {
+                            if (result.Trofeji != "")
+                            {
+                                MessageBox.Show("Da li ste znali da je " + result.PunoIme + " osvojio : " + result.Trofeji + "trofeja?");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nema informacija!!");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ne postoji igrac sa zadatim imenom");
+                        }                        
+                                      
+                    break;
+                case 4:
+                    
+                        if(result.PunoIme == imeIgraca)
+                        {
+                            if (result.Statistika != "")
+                            {
+                                MessageBox.Show("Da li ste znali da je " + result.PunoIme + ": " + result.Statistika);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nema informacija!!");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ne postoji igrac sa zadatim imenom");
+                        }
+                                      
+                    break;
+                case 5:
+                    
+                        if(result1.PunoIme == imeTrenera)
+                        {
+                            if (result1.TrenerskaKarijera != "")
+                            {
+                                MessageBox.Show("Da li ste znali da je " + result1.PunoIme + "imao karijeru : " + result1.TrenerskaKarijera);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nema informacija!!");
+                            }                  
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ne postoji trener sa zadatim imenom");
+                        }
+                                       
+                    break;
+                case 6:
+                   
+                        if(result1.PunoIme == imeTrenera)
+                        {
+                            if (result1.Uspesi != "")
+                            {
+                                MessageBox.Show("Da li ste znali da je " + result1.PunoIme + " osvojio : " + result1.Uspesi);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nema informacija!!");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ne postoji trener sa zadatim imenom");
+                        }                        
+                                       
+                    break;
+                case 7:
+                    
+                        if(result2.Ime == imeTakmicenja)
+                        {
+                            if (result2.Ime != "")
+                            {
+                                MessageBox.Show("Da li ste znali da se " + result2.Ime + " zove : " + result2.Ime);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nema informacija!!");
+                            }  
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ne postoji takmicenje sa zadatim imenom");
+                        }                                              
+                    
+                    break;
+                case 8:
+                   
+                       if(result2.Ime == imeTakmicenja)
+                       {
+                           if (result2.Opis != "")
+                           {
+                               MessageBox.Show("Da li ste znali da je " + result2.Ime + ": " + result2.Opis);
+                           }
+                           else
+                           {
+                               MessageBox.Show("Nema informacija!!");
+                           }  
+                       }
+                       else
+                       {
+                           MessageBox.Show("Ne postoji takmicenje sa zadatim imenom");
+                       }
+                                              
+                    
+                    break;
+                case 9:
+                    
+                        if(result2.Ime == imeTakmicenja)
+                        {
+                            if (result2.PoslednjiPobednik != "")
+                            {
+                                MessageBox.Show("Da li ste znali da je " + result2.Ime + "poslednji pobedio!!");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nema informacija!!");
+                            }  
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ne postoji takmicenje sa zadatim imenom");
+                        }
+                                              
+                    
+                    break;
+                case 10:
+                   
+                       if(result2.Ime == imeTakmicenja)
+                       {
+                           if (result2.SistemIgranja != "")
+                           {
+                               MessageBox.Show("Da li ste znali da je na " + result2.Ime + "sistem igranja sledeci: " + result2.SistemIgranja);
+                           }
+                           else
+                           {
+                               MessageBox.Show("Nema informacija!!");
+                           } 
+                       }
+                       else
+                       {
+                           MessageBox.Show("Ne postoji takmicenje sa zadatim imenom");
+                       }
+                                               
+                    
+                    break;
+                default:
+                    
+                         if(result2.Ime == imeTakmicenja)
+                         {
+                             if (result2.Statistika != "")
+                             {
+                                 MessageBox.Show("Da li ste znali da je na " + result2.Ime + "statistika sledeca : " + result2.Statistika);
+                             }
+                             else
+                             {
+                                 MessageBox.Show("Nema informacija!!");
+                             }   
+                         }
+                         else
+                         {
+                             MessageBox.Show("Ne postoji takmicenje sa zadatim imenom");
+                         }                                            
+                    
+                    break;
+            }
+            
+
         }
 
     }

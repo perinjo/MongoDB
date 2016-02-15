@@ -111,6 +111,7 @@ namespace MongoDriverTest
             if (simulacijaUtakmice == null || !simulacijaUtakmice.IsAlive)
             {
                 AlgoritamSimulacije algo = new AlgoritamSimulacije(this);
+                algo.DaLiSteZnali("Test2", "Jovan Milosevic", "Proba");
                 simulacijaUtakmice = new Thread(new ThreadStart(algo.simulirajUtakmicu));
                 simulacijaUtakmice.Start();
             }
